@@ -7,6 +7,9 @@ export const Profile = () => {
     return (
         <div className={style.profile}>
             <img src={photo}/>
+            <div>
+                ava+desc
+            </div>
             <MyPosts/>
         </div>
     )

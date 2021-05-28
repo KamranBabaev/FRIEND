@@ -1,12 +1,20 @@
 import React from "react";
 import style from './Post.module.css'
+import avatar from './avatar.jpg'
 
-export const Post = () => {
+type PostPropsType = {
+    title: string
+    likeCounts: number
+}
+
+export const Post = (props: PostPropsType) => {
     return (
-        <div className={style.post}>
-            <div>новый пост</div>
-            <div>новый пост</div>
-            <div>новый пост</div>
+        <div className={style.posts}>
+            <img alt='' src={avatar}/>
+            {props.title}<br/>
+            <span>
+                like {props.likeCounts}
+            </span>
         </div>
     )
 }

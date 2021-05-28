@@ -1,5 +1,23 @@
 .navbar {
     grid-area: nav;
-    background-color: #404040;
+    background-color: #1f1f1f;
     color: white;
+}
+
+.items {
+    padding: 10px 0 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    transition: linear 80ms;
+}
+
+.items:hover {
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+    background-color: #82c785;
+    box-shadow: 0 0 5px rgba(130, 199, 133, 0.7);
+    transition: linear 80ms;
 }

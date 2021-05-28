@@ -4,19 +4,19 @@ import style from './Navbar.module.css'
 export const Navbar = () => {
     return (
         <div className={style.navbar}>
-            <div>
+            <div className={style.items}>
                 <a>Профиль</a>
             </div>
-            <div>
+            <div className={style.items}>
                 <a>Сообщения</a>
             </div>
-            <div>
+            <div className={style.items}>
                 <a>Новости</a>
             </div>
-            <div>
+            <div className={style.items}>
                 <a>Музыка</a>
             </div>
-            <div>
+            <div className={style.items}>
                 <a>Настройки</a>
             </div>
         </div>
