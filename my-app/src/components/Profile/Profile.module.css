@@ -1,0 +1,8 @@
+.profile {
+    grid-area: pr;
+    background-color: brown;
+}
+
+.profile img {
+    width: inherit;
+}
