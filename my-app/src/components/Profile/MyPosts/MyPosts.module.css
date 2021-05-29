@@ -1,3 +1,7 @@
+.myPosts {
+    padding: 10px;
+}
+
 .textForm textarea{
     min-width: 800px;
     max-width: 1000px;

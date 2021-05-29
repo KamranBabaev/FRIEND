@@ -8,7 +8,7 @@ export const MyPosts = () => {
             <div className={style.textForm}>
                 <textarea/>
                 <div className={style.buttons}>
-                    <button>SEND</button>
+                    <button >SEND</button>
                     <button>DELETE</button>
                 </div>
             </div>
