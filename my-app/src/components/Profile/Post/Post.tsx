@@ -1,11 +1,10 @@
 import React from "react";
 import style from './Post.module.css'
 import avatar from './avatar.jpg'
+import {PostDataType} from "../MyPosts/MyPosts";
 
-type PostPropsType = {
-    title: string
-    likeCounts: number
-}
+type PostPropsType = PostDataType
+
 
 export const Post = (props: PostPropsType) => {
     return (

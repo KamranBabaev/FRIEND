@@ -14,23 +14,25 @@ export const Dialogs = (props: any) => {
         {id: 1, name: 'Кларк'},
         {id: 2, name: 'Питер'},
     ]
+    let dialogsElements = dialogsData
+        .map(d => <DialogItem id={d.id} name={d.name}/>)
 
     const messagesData = [
         {id: 1, message: 'Хей, привет'},
         {id: 2, message: 'Давай пройдемся?'},
     ]
+    let messagesElements = messagesData
+        .map(m => <Message message={m.message}/>)
 
     return (
         <div className={style.dialogs}>
 
             <div className={style.d_items}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                {dialogsElements}
             </div>
 
             <div className={style.messages}>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
+                {messagesElements}
             </div>
 
         </div>
