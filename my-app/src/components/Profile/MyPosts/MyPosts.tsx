@@ -13,7 +13,7 @@ export const MyPosts = () => {
                 </div>
             </div>
             <div>
-                <Post title='Прокинул пропс через myPosts' likeCounts={22}/>
+                <Post title='Уволился с работы, учу JS и REACT!' likeCounts={22}/>
                 <Post title='Учу реакт 1 месяц, летим' likeCounts={19}/>
                 <Post title='Начался 2 месяц, летим' likeCounts={8}/>
             </div>

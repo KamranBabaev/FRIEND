@@ -6,7 +6,9 @@ import {MyPosts} from "./MyPosts/MyPosts";
 export const Profile = () => {
     return (
         <div className={style.profile}>
-            <img src={photo}/>
+            <div>
+                <img src={photo} alt=''/>
+            </div>
             <MyPosts/>
         </div>
     )

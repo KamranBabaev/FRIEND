@@ -15,3 +15,8 @@ body {
   grid-template-columns: 1fr 6fr;
   grid-gap: 0;
 }
+
+.App-wrapper-content {
+  grid-area: pr;
+  background-color: #82c785;
+}
