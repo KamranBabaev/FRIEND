@@ -3,12 +3,16 @@ import style from './Profile.module.css'
 import photo from './content.jpg'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {PostsType} from "../../index";
 
-export const Profile = () => {
+type ProfileType = {
+    posts: Array<PostsType>
+}
+export const Profile = (props: ProfileType) => {
     return (
         <div className={style.profile}>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts={props.posts}/>
         </div>
     )
 }
