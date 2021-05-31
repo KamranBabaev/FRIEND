@@ -10,10 +10,11 @@ type NavbarPropsType = {
 export const Navbar = (props: NavbarPropsType) => {
 
     let friendElements = props.friends
-        .map(f => <div className={style.friends}>
-            <img src={avatar} alt=''/>
-            {f.name}
-        </div>)
+        .map(f => <div className={style.friend}>
+                <img src={avatar} alt=''/>
+                {f.name}
+            </div>
+        )
 
 
     return (
@@ -36,7 +37,9 @@ export const Navbar = (props: NavbarPropsType) => {
                 </div>
             </div>
 
+            <div className={style.friends}>
                 {friendElements}
+            </div>
 
         </div>
     )

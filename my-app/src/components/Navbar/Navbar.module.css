@@ -39,14 +39,14 @@
     color: black;
 }
 
-.friends img {
+.friend img {
     width: 45px;
     border-radius: 45px;
     display: flex;
     margin-bottom: 10px;
 }
 
-.friends {
+.friend {
     color: white;
     float: left;
     margin: 10px 10px 30px 10px;
