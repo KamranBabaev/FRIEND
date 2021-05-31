@@ -2,7 +2,7 @@ import React from "react";
 import style from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType} from "../../index";
+import {DialogType, MessageType} from "../../redux/state";
 
 type DialogsType = {
     dialogs: Array<DialogType>
