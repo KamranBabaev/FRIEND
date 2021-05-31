@@ -1,4 +1,10 @@
-
+export type SidebarType = {
+    friend: Array<FriendType>
+}
+export type FriendType = {
+    id: number
+    name: string
+}
 export type PostsType = {
     id: number
     title: string
@@ -22,27 +28,42 @@ export type MessagePageType = {
 export type StateType = {
     profilePage: ProfilePageType
     messagePage: MessagePageType
+    sidebar: SidebarType
 }
 
 
 let state: StateType = {
     profilePage: {
-        posts: [
-            {id: 1, title: 'Уволился с работы, учу JS и REACT!', likeCounts: 22},
-            {id: 2, title: 'Учу реакт 1 месяц, летим', likeCounts: 19},
-        ],
+        posts:
+            [
+                {id: 1, title: 'Уволился с работы, учу JS и REACT!', likeCounts: 22},
+                {id: 2, title: 'Учу реакт 1 месяц, летим', likeCounts: 19},
+            ],
     },
 
     messagePage: {
-        dialogs: [
-            {id: 1, name: 'Кларк'},
-            {id: 2, name: 'Питер'},
-        ],
+        dialogs:
+            [
+                {id: 1, name: 'Кларк'},
+                {id: 2, name: 'Питер'},
+            ],
 
-        messages: [
-            {id: 1, message: 'Хей, привет'},
-            {id: 2, message: 'Давай пройдемся?'},
-        ],
+        messages:
+            [
+                {id: 1, message: 'Хей, привет'},
+                {id: 2, message: 'Давай пройдемся?'},
+            ],
     },
+
+    sidebar: {
+        friend: [
+            {id: 1, name: 'Брюс'},
+            {id: 2, name: 'Тор'},
+            {id: 3, name: 'Мэт'},
+            {id: 4, name: 'Барии'},
+            {id: 5, name: 'Тони'},
+            {id: 6, name: 'Стив'},
+        ]
+    }
 }
 export default state;

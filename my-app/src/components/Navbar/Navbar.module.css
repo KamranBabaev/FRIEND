@@ -3,6 +3,10 @@
     background-color: #1f1f1f;
 }
 
+.navbarElements {
+    margin-bottom: 50px;
+}
+
 .items {
     padding: 10px 0 10px 15px;
     cursor: pointer;
@@ -33,6 +37,20 @@
 .items a:hover {
     text-decoration: none;
     color: black;
+}
+
+.friends img {
+    width: 45px;
+    border-radius: 45px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.friends {
+    color: white;
+    float: left;
+    margin: 10px 10px 30px 10px;
+    text-align: center;
 }
 
 

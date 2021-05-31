@@ -2,6 +2,7 @@ import React from "react";
 import style from './DialogItem.module.css'
 import {NavLink} from "react-router-dom";
 import {DialogType} from "../../../redux/state";
+import avatar from './avatar.jpg'
 
 type DialogItemType = DialogType
 
@@ -11,7 +12,10 @@ export const DialogItem = (props: DialogItemType) => {
 
     return (
         <div className={style.dialog}>
-            <NavLink activeClassName={style.nav} to={dialogURL}>{props.name}</NavLink>
+            <NavLink activeClassName={style.nav} to={dialogURL}>
+                <img src={avatar}/>
+                {props.name}
+            </NavLink>
         </div>
     )
 }

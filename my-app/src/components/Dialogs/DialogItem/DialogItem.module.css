@@ -1,5 +1,6 @@
 .dialog {
     padding: 10px 0;
+    display: grid;
 }
 
 .dialog a, .dialog a:link, .dialog a:visited {
@@ -12,4 +13,11 @@
 .dialog a:hover {
     font-weight: 700;
     transition: linear 50ms;
+}
+
+.dialog img {
+    width: 45px;
+    border-radius: 45px;
+    float: left;
+    margin-right: 5px;
 }
