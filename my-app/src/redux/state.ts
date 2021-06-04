@@ -42,17 +42,15 @@ let state: StateType = {
     },
 
     messagePage: {
-        dialogs:
-            [
-                {id: 1, name: 'Кларк'},
-                {id: 2, name: 'Питер'},
-            ],
+        dialogs: [
+            {id: 1, name: 'Кларк'},
+            {id: 2, name: 'Питер'},
+        ],
 
-        messages:
-            [
-                {id: 1, message: 'Хей, привет'},
-                {id: 2, message: 'Давай пройдемся?'},
-            ],
+        messages: [
+            {id: 1, message: 'Хей, привет'},
+            {id: 2, message: 'Давай пройдемся?'},
+        ],
     },
 
     sidebar: {
@@ -66,4 +64,10 @@ let state: StateType = {
         ]
     }
 }
+
+export const addPost = (postMessage: string) => {
+    const newPost: PostsType = {id: 5, title: postMessage, likeCounts: 0}
+    state.profilePage.posts.push(newPost)
+}
+
 export default state;

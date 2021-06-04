@@ -2,7 +2,7 @@ import React from "react";
 import style from './ProfileInfo.module.css'
 import photo from "../content.jpg";
 
-export const ProfileInfo = (props: any) => {
+export const ProfileInfo = () => {
     return (
         <div className={style.profileInfo}>
             <div>
