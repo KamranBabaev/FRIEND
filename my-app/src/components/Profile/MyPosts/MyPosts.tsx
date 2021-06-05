@@ -11,13 +11,14 @@ type MyPostsType = {
 export const MyPosts = (props: MyPostsType) => {
 
     const postElements = props.posts.map(p => <Post
-        id={p.id} title={p.title} likeCounts={p.likeCounts}/>)
+       key={p.id} id={p.id} title={p.title} likeCounts={p.likeCounts}/>)
 
     const newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
-        if (newPostElement.current) {
-            props.addPost(newPostElement.current.value)
+        if (newPostElement.current?.value) {
+            props.addPost(newPostElement.current.value);
+            newPostElement.current.value = '';
         }
     }
 

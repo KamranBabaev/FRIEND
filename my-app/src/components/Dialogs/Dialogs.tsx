@@ -7,6 +7,8 @@ import {DialogType, MessageType} from "../../redux/state";
 type DialogsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    addMessage: (textMessage: string) => void
+
 }
 
 export const Dialogs = (props: DialogsType) => {
@@ -15,7 +17,7 @@ export const Dialogs = (props: DialogsType) => {
         .map(d => <DialogItem id={d.id} name={d.name}/>)
 
     let messagesElements = props.messages
-        .map(m => <Message message={m.message}/>)
+        .map(m => <Message message={m.message} addMessage={props.addMessage}/>)
 
     return (
         <div className={style.dialogs}>

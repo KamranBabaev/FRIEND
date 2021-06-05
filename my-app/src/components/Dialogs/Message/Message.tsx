@@ -3,6 +3,7 @@ import style from "./Message.module.css";
 
 type MessagePropsType = {
     message: string
+    addMessage: (textMessage: string) => void
 }
 
 export const Message = (props: MessagePropsType) => {
@@ -10,7 +11,10 @@ export const Message = (props: MessagePropsType) => {
     const newMessageElement = React.createRef<HTMLTextAreaElement>()
 
     const addMessage = () => {
-        alert(newMessageElement.current?.value)
+        if(newMessageElement.current?.value) {
+            props.addMessage(newMessageElement.current.value);
+            newMessageElement.current.value = ''
+        }
     }
 
     return (

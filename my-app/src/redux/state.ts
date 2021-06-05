@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 export type SidebarType = {
     friend: Array<FriendType>
 }
@@ -68,6 +70,13 @@ let state: StateType = {
 export const addPost = (postMessage: string) => {
     const newPost: PostsType = {id: 5, title: postMessage, likeCounts: 0}
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}
+
+export const addMessage = (textMessage: string) => {
+    const newMessage: MessageType = {id: 3, message: textMessage}
+    state.messagePage.messages.push(newMessage)
+    rerenderEntireTree(state)
 }
 
 export default state;
