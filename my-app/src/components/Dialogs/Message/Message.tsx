@@ -1,26 +1,27 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import style from "./Message.module.css";
 
 type MessagePropsType = {
     message: string
-    addMessage: (textMessage: string) => void
+    addMessage: () => void
+    addNewMessageText: (newMessageText: string) => void
+    newMessageText: string
 }
 
 export const Message = (props: MessagePropsType) => {
 
-    const newMessageElement = React.createRef<HTMLTextAreaElement>()
-
     const addMessage = () => {
-        if(newMessageElement.current?.value) {
-            props.addMessage(newMessageElement.current.value);
-            newMessageElement.current.value = ''
-        }
+        props.addMessage()
+    }
+
+    const onMessageOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        props.addNewMessageText(event.currentTarget.value)
     }
 
     return (
         <div className={style.messages}>
             <div className={style.item}>
-                <textarea ref={newMessageElement}/>
+                <textarea value={props.newMessageText} onChange={onMessageOnChange}/>
                 <div>
                     <button onClick={addMessage}>SEND</button>
                 </div>
