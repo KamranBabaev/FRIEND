@@ -5,9 +5,8 @@ import {PostsType} from "../../../redux/state";
 
 type MyPostsType = {
     posts: Array<PostsType>
-    addPost: () => void
     newPostText: string
-    addNewPostText: (newPostText: string) => void
+    dispatch: (action: any) => void
 }
 
 export const MyPosts = (props: MyPostsType) => {
@@ -15,12 +14,14 @@ export const MyPosts = (props: MyPostsType) => {
     const postElements = props.posts.map(p => <Post
         key={p.id} id={p.id} title={p.title} likeCounts={p.likeCounts}/>)
 
+
     const addPost = () => {
-        props.addPost()
+        props.dispatch({type: 'ADD-POST'} )
     }
 
-    let onPostOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.addNewPostText(event.currentTarget.value)
+    const onPostOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = event.currentTarget.value
+        props.dispatch({type: 'ADD-NEW-POST-TEXT', newPostText: text})
     }
 
     return (
@@ -28,7 +29,8 @@ export const MyPosts = (props: MyPostsType) => {
 
             <div className={style.textForm}>
                 <textarea value={props.newPostText}
-                          onChange={onPostOnChange}/>
+                          onChange={onPostOnChange}
+                />
 
                 <div className={style.buttons}>
                     <button onClick={addPost}>SEND</button>

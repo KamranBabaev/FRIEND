@@ -32,15 +32,31 @@ export type StateType = {
     messagePage: MessagePageType
     sidebar: SidebarType
 }
+
+type AddPostType = {
+    type :'ADD-POST'
+    newPostText: string
+}
+type AddMessageType = {
+    type :'ADD-MESSAGE'
+}
+type AddNewPostType = {
+    type :'ADD-NEW-POST-TEXT'
+    newPostText: string
+}
+type AddNewMessageType = {
+    type :'ADD-NEW-MESSAGE-TEXT'
+    newMessageText: string
+}
+
+export type ActionType =  AddPostType | AddMessageType | AddNewPostType | AddNewMessageType
+
 export type StoreType = {
     _state: StateType
-    getState: () => StateType
     _callSubscriber: (state: StateType) => void
-    addPost: () => void
-    addNewPostText: (newPostText: string) => void
-    addMessage: () => void
-    addNewMessageText: (newPostText: string) => void
+    getState: () => StateType
     subscribe: (observer: any) => void
+    dispatch: (action: ActionType) => void
 }
 
 
@@ -80,37 +96,35 @@ const store: StoreType = {
         }
     },
 
-    _callSubscriber() {},
-
-    getState () { return this._state},
-
-    addPost() {
-        const newPost: PostsType = {id: 5, title: this._state.profilePage.newPostText, likeCounts: 0}
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
+    _callSubscriber() {
     },
 
-    addNewPostText(newPostText) {
-        debugger
-        this._state.profilePage.newPostText = newPostText
-        this._callSubscriber(this._state)
-    },
-
-    addMessage() {
-        const newMessage: MessageType = {id: 3, message: this._state.messagePage.newMessageText}
-        this._state.messagePage.messages.push(newMessage)
-        this._state.messagePage.newMessageText = ''
-        this._callSubscriber(this._state)
-    },
-
-    addNewMessageText(newMessageText) {
-        this._state.messagePage.newMessageText = newMessageText
-        this._callSubscriber(this._state)
+    getState() {
+        return this._state
     },
 
     subscribe(observer) {
         this._callSubscriber = observer
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostsType = {id: 5, title: this._state.profilePage.newPostText, likeCounts: 0}
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newPostText
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage: MessageType = {id: 3, message: this._state.messagePage.newMessageText}
+            this._state.messagePage.messages.push(newMessage)
+            this._state.messagePage.newMessageText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-NEW-MESSAGE-TEXT') {
+            this._state.messagePage.newMessageText = action.newMessageText
+            this._callSubscriber(this._state)
+        }
     },
 
 }

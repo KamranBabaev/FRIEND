@@ -1,21 +1,22 @@
 import React, {ChangeEvent} from "react";
 import style from "./Message.module.css";
+import {ActionType} from "../../../redux/state";
 
 type MessagePropsType = {
     message: string
-    addMessage: () => void
-    addNewMessageText: (newMessageText: string) => void
+    dispatch: (action: ActionType) => void
     newMessageText: string
 }
 
 export const Message = (props: MessagePropsType) => {
 
     const addMessage = () => {
-        props.addMessage()
+        props.dispatch( {type: "ADD-MESSAGE"} )
     }
 
     const onMessageOnChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.addNewMessageText(event.currentTarget.value)
+        let text = event.currentTarget.value
+        props.dispatch({type: "ADD-NEW-MESSAGE-TEXT", newMessageText: text} )
     }
 
     return (

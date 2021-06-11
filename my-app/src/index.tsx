@@ -11,19 +11,12 @@ const rerenderEntireTree = (state: StateType) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={store.addPost.bind(store)}
-                 addNewPostText={store.addNewPostText.bind(store)}
-                 addMessage={store.addMessage.bind(store)}
-                 addNewMessageText={store.addNewMessageText.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
             />
         </BrowserRouter>, document.getElementById('root'))
 }
 
 rerenderEntireTree(store.getState())
 store.subscribe(rerenderEntireTree)
-
-
-
-
 
 reportWebVitals();

@@ -5,42 +5,36 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Route} from 'react-router-dom';
-import {StateType, StoreType} from './redux/state';
+import {StateType} from './redux/state';
 
 type AppPropsType = {
     state: StateType
-    addPost: () => void
-    addNewPostText: (newPostText: string) => void
-    addMessage: () => void
-    addNewMessageText: (newPostText: string) => void
+    dispatch: (action: any) => void
 }
 
 function App(props: AppPropsType) {
     return (
         <div className="App-wrapper">
+
             <Header/>
             <Navbar friends={props.state.sidebar.friend}/>
-            <div className='App-wrapper-content'>
 
+            <div className='App-wrapper-content'>
                 <Route path='/profile'
                        render={() => <Profile
                            profilePage={props.state.profilePage}
-                           addPost={props.addPost}
-                           addNewPostText={props.addNewPostText}/>}/>
+                           dispatch={props.dispatch}
+                       />}/>
 
                 <Route exact path='/dialogs'
                        render={() => <Dialogs
-                           dialogs={props.state.messagePage.dialogs}
-                           messagePage={props.state.messagePage}
-                           addMessage={props.addMessage}
-                           addNewMessageText={props.addNewMessageText}
+                           state={props.state.messagePage}
+                           dispatch={props.dispatch}
                        />}/>
-
             </div>
+
         </div>
     )
 }
 
 export default App;
-
-

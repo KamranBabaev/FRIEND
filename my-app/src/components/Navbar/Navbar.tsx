@@ -7,6 +7,7 @@ import avatar from './avatar.jpg'
 type NavbarPropsType = {
     friends: Array<FriendType>
 }
+
 export const Navbar = (props: NavbarPropsType) => {
 
     let friendElements = props.friends.map(f => <div className={style.friend}>
