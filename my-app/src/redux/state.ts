@@ -32,25 +32,22 @@ export type StateType = {
     messagePage: MessagePageType
     sidebar: SidebarType
 }
-
-type AddPostType = {
+type AddPostAT = {
     type :'ADD-POST'
-    newPostText: string
+    // newPostText: string
 }
-type AddMessageType = {
-    type :'ADD-MESSAGE'
-}
-type AddNewPostType = {
+type AddNewPostAT = {
     type :'ADD-NEW-POST-TEXT'
     newPostText: string
 }
-type AddNewMessageType = {
+type AddMessageAT = {
+    type :'ADD-MESSAGE'
+}
+type AddNewMessageAT = {
     type :'ADD-NEW-MESSAGE-TEXT'
     newMessageText: string
 }
-
-export type ActionType =  AddPostType | AddMessageType | AddNewPostType | AddNewMessageType
-
+export type ActionType =  AddPostAT | AddMessageAT | AddNewPostAT | AddNewMessageAT
 export type StoreType = {
     _state: StateType
     _callSubscriber: (state: StateType) => void
@@ -60,8 +57,13 @@ export type StoreType = {
 }
 
 
-const store: StoreType = {
+const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_NEW_MESSAGE_TEXT = 'ADD-NEW-MESSAGE-TEXT';
 
+
+const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -108,25 +110,32 @@ const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost: PostsType = {id: 5, title: this._state.profilePage.newPostText, likeCounts: 0}
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-NEW-POST-TEXT') {
+        } else if (action.type === ADD_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             let newMessage: MessageType = {id: 3, message: this._state.messagePage.newMessageText}
             this._state.messagePage.messages.push(newMessage)
             this._state.messagePage.newMessageText = ''
             this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-NEW-MESSAGE-TEXT') {
+        } else if (action.type === ADD_NEW_MESSAGE_TEXT) {
             this._state.messagePage.newMessageText = action.newMessageText
             this._callSubscriber(this._state)
         }
     },
-
 }
+
+export const addPostAC = (): AddPostAT => ({type: ADD_POST})
+
+export const onPostOnChangeAC = (text: string): AddNewPostAT =>({type: ADD_NEW_POST_TEXT, newPostText: text})
+
+export const addMessageAC = (): AddMessageAT => ({type: ADD_MESSAGE})
+
+export const onMessageOnChangeAC = (text: string): AddNewMessageAT => ({type: ADD_NEW_MESSAGE_TEXT, newMessageText: text})
 
 export default store;
