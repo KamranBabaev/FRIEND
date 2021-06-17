@@ -1,3 +1,7 @@
+import {profileReducer} from "./reducers/profile-reducers";
+import {dialogsReducer} from "./reducers/dialogs-reducers";
+import {sidebarReducer} from "./reducers/sidebar-reducers";
+
 export type SidebarType = {
     friend: Array<FriendType>
 }
@@ -32,21 +36,21 @@ export type StateType = {
     messagePage: MessagePageType
     sidebar: SidebarType
 }
-type AddPostAT = {
-    type :'ADD-POST'
+export type AddPostAT = {
+    type: 'ADD-POST'
 }
-type AddNewPostAT = {
-    type :'ADD-NEW-POST-TEXT'
+export type AddNewPostAT = {
+    type: 'ADD-NEW-POST-TEXT'
     newPostText: string
 }
-type AddMessageAT = {
-    type :'ADD-MESSAGE'
+export type AddMessageAT = {
+    type: 'ADD-MESSAGE'
 }
-type AddNewMessageAT = {
-    type :'UPDATE-NEW-MESSAGE-TEXT'
+export type AddNewMessageAT = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
     newMessageText: string
 }
-export type ActionType =  AddPostAT | AddMessageAT | AddNewPostAT | AddNewMessageAT
+export type ActionType = AddPostAT | AddMessageAT | AddNewPostAT | AddNewMessageAT
 export type StoreType = {
     _state: StateType
     _callSubscriber: (state: StateType) => void
@@ -54,13 +58,6 @@ export type StoreType = {
     subscribe: (observer: any) => void
     dispatch: (action: ActionType) => void
 }
-
-
-const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
-const ADD_POST = 'ADD-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-
 
 const store: StoreType = {
     _state: {
@@ -109,32 +106,13 @@ const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost: PostsType = {id: 5, title: this._state.profilePage.newPostText, likeCounts: 0}
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === ADD_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText
-            this._callSubscriber(this._state)
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessageType = {id: 3, message: this._state.messagePage.newMessageText}
-            this._state.messagePage.newMessageText = ''
-            this._state.messagePage.messages.push(newMessage)
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.messagePage.newMessageText = action.newMessageText
-            this._callSubscriber(this._state)
-        }
-    },
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagePage = dialogsReducer(this._state.messagePage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+        this._callSubscriber(this._state)
+    }
 }
-
-export const addPostAC = (): AddPostAT => ({type: ADD_POST})
-
-export const onPostOnChangeAC = (text: string): AddNewPostAT =>({type: ADD_NEW_POST_TEXT, newPostText: text})
-
-export const addMessageAC = (): AddMessageAT => ({type: ADD_MESSAGE})
-
-export const updateNewMessageTextAC = (text: string): AddNewMessageAT => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text})
 
 export default store;
