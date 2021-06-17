@@ -7,6 +7,7 @@ type PostPropsType = {
     title: string
     likeCounts: number
 }
+
 export const Post = (props: PostPropsType) => {
     return (
         <div className={style.posts}>

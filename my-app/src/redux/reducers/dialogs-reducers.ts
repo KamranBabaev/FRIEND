@@ -1,9 +1,22 @@
-import {ActionType, AddMessageAT, AddNewMessageAT, MessageType} from "../state";
+import {ActionType, AddMessageAT, AddNewMessageAT, MessageType} from "../store";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-export const dialogsReducer = (state: any, action: ActionType) => {
+let initialState = {
+    dialogs: [
+        {id: 1, name: 'Кларк'},
+        {id: 2, name: 'Питер'},
+    ],
+
+    messages: [
+        {id: 1, message: 'Хей, привет'},
+        {id: 2, message: 'Как у тебя дела,'},
+    ],
+    newMessageText: ''
+}
+
+export const dialogsReducer = (state: any = initialState, action: ActionType) => {
 
     switch (action.type) {
         case ADD_MESSAGE:

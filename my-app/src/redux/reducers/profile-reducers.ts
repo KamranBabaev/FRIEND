@@ -1,9 +1,17 @@
-import {ActionType, AddNewPostAT, AddPostAT, PostsType} from "../state";
+import {ActionType, AddNewPostAT, AddPostAT, PostsType} from "../store";
 
 const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 
-export const profileReducer = (state: any, action: ActionType) => {
+let initialState = {
+    posts: [
+        {id: 1, title: 'Уволился с работы, учу JS и REACT!', likeCounts: 22},
+        {id: 2, title: 'Учу реакт 1 месяц, летим', likeCounts: 19},
+    ],
+    newPostText: ''
+}
+
+export const profileReducer = (state: any = initialState, action: ActionType) => {
 
     switch (action.type) {
         case ADD_POST:
