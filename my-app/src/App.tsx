@@ -5,11 +5,11 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Route} from 'react-router-dom';
-import {StateType} from './redux/state';
+import {StoreType} from './redux/state';
 
 type AppPropsType = {
-    state: StateType
     dispatch: (action: any) => void
+    store: StoreType
 }
 
 function App(props: AppPropsType) {
@@ -17,19 +17,18 @@ function App(props: AppPropsType) {
         <div className="App-wrapper">
 
             <Header/>
-            <Navbar friends={props.state.sidebar.friend}/>
+            <Navbar friends={props.store._state.sidebar.friend}/>
 
             <div className='App-wrapper-content'>
                 <Route path='/profile'
                        render={() => <Profile
-                           profilePage={props.state.profilePage}
+                           profilePage={props.store._state.profilePage}
                            dispatch={props.dispatch}
                        />}/>
 
                 <Route exact path='/dialogs'
                        render={() => <Dialogs
-                           state={props.state.messagePage}
-                           dispatch={props.dispatch}
+                           store={props.store}
                        />}/>
             </div>
 

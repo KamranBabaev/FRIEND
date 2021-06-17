@@ -43,7 +43,7 @@ type AddMessageAT = {
     type :'ADD-MESSAGE'
 }
 type AddNewMessageAT = {
-    type :'ADD-NEW-MESSAGE-TEXT'
+    type :'UPDATE-NEW-MESSAGE-TEXT'
     newMessageText: string
 }
 export type ActionType =  AddPostAT | AddMessageAT | AddNewPostAT | AddNewMessageAT
@@ -59,7 +59,7 @@ export type StoreType = {
 const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const ADD_NEW_MESSAGE_TEXT = 'ADD-NEW-MESSAGE-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 
 const store: StoreType = {
@@ -80,8 +80,8 @@ const store: StoreType = {
 
             messages: [
                 {id: 1, message: 'Хей, привет'},
+                {id: 2, message: 'Как у тебя дела,'},
             ],
-
             newMessageText: ''
         },
 
@@ -119,10 +119,10 @@ const store: StoreType = {
             this._callSubscriber(this._state)
         } else if (action.type === ADD_MESSAGE) {
             let newMessage: MessageType = {id: 3, message: this._state.messagePage.newMessageText}
-            this._state.messagePage.messages.push(newMessage)
             this._state.messagePage.newMessageText = ''
+            this._state.messagePage.messages.push(newMessage)
             this._callSubscriber(this._state)
-        } else if (action.type === ADD_NEW_MESSAGE_TEXT) {
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.messagePage.newMessageText = action.newMessageText
             this._callSubscriber(this._state)
         }
@@ -135,6 +135,6 @@ export const onPostOnChangeAC = (text: string): AddNewPostAT =>({type: ADD_NEW_P
 
 export const addMessageAC = (): AddMessageAT => ({type: ADD_MESSAGE})
 
-export const onMessageOnChangeAC = (text: string): AddNewMessageAT => ({type: ADD_NEW_MESSAGE_TEXT, newMessageText: text})
+export const updateNewMessageTextAC = (text: string): AddNewMessageAT => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text})
 
 export default store;
