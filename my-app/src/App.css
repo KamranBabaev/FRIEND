@@ -3,6 +3,7 @@ body {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
+  background-color: white;
 }
 
 .App-wrapper {
@@ -10,12 +11,12 @@ body {
   grid-template-areas:
     'hd hd'
     'nav pr';
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 2fr 11fr;
   grid-gap: 0;
 }
 
 .App-wrapper-content {
   grid-area: pr;
-  background-color: #82c785;
+  background-color: white;
 }

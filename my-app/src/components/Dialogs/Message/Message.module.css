@@ -16,7 +16,7 @@
 }
 
 .messages button:hover {
-    background-color: rgb(255, 144, 107);
+    background-color: #1e7b7f;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     transition: linear 70ms;
 }
@@ -43,7 +43,7 @@
     max-height: 2500px;
     border: solid 2px #3d3d3d;
     border-radius: 15px 15px 15px 0;
-    background-color: #fff6a3;
+    background-color: rgba(30, 123, 127, 0.1);
 }
 
 

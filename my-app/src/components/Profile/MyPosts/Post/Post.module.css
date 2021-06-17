@@ -1,9 +1,10 @@
 .posts img {
     width: 45px;
     border-radius: 45px;
+    border: solid 2px black;
 }
 
 .posts {
-    padding-top: 10px;
+    padding-top: 20px;
 }
 

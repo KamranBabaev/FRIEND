@@ -1,7 +1,15 @@
-.profileInfo img {
-    width: 100%;
+.user {
+    margin: 25px;
+}
+
+.user img {
+    width: 200px;
 }
 
 .description {
     padding: 10px;
+}
+
+.name {
+    font-family: Impact;
 }

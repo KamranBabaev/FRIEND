@@ -36,6 +36,7 @@ export const Navbar = (props: NavbarPropsType) => {
             </div>
 
             <div className={style.friends}>
+                <div className={style.titleFriends}>friends:</div>
                 {friendElements}
             </div>
 

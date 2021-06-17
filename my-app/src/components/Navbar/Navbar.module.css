@@ -1,6 +1,9 @@
 .navbar {
+    font-size: 18px;
     grid-area: nav;
-    background-color: #1f1f1f;
+    background-color: white;
+    border-right: solid 1px #1e7b7f;
+    font-weight: 700;
 }
 
 .navbarElements {
@@ -11,32 +14,30 @@
     padding: 10px 0 10px 15px;
     cursor: pointer;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     transition: linear 80ms;
-    color: white;
+    color: black;
 }
 
 .items:hover {
-    font-size: 18px;
-    font-weight: 700;
-    background-color: #82c785;
-    box-shadow: 0 0 5px rgba(130, 199, 133, 0.7);
+    border: solid 1px #1e7b7f;
+    box-shadow: 0 0 5px rgba(30, 123, 127, 0.7);
     transition: linear 80ms;
+    background-color: #f8f8f8;
 }
 
 .items a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .items a:link, a:visited {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .items a:hover {
     text-decoration: none;
-    color: black;
 }
 
 .friend img {
@@ -44,13 +45,19 @@
     border-radius: 45px;
     display: flex;
     margin-bottom: 10px;
+    border: solid 2px black;
+
 }
 
 .friend {
-    color: white;
     float: left;
     margin: 10px 10px 30px 10px;
     text-align: center;
+}
+
+.titleFriends {
+    padding: 10px;
+    font-weight: 600;
 }
 
 

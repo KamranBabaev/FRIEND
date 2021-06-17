@@ -34,7 +34,6 @@ export type StateType = {
 }
 type AddPostAT = {
     type :'ADD-POST'
-    // newPostText: string
 }
 type AddNewPostAT = {
     type :'ADD-NEW-POST-TEXT'

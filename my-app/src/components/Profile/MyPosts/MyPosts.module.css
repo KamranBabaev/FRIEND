@@ -23,7 +23,7 @@
 }
 
 .buttons button:hover {
-    background-color: rgb(255, 144, 107);
+    background-color: #1e7b7f;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     transition: linear 70ms;
 }

@@ -1,9 +1,11 @@
 .header {
     grid-area: hd;
-    background-color: #1f1f1f;
+    background-color: #1e7b7f;
+    color: white;
+    font-family: cursive;
 }
 
-.header img {
-    width: 60px;
-    margin: 8px auto auto 10px;
+.logo {
+    margin: 20px;
+    font-weight: 700;
 }

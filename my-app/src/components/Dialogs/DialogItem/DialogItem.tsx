@@ -2,7 +2,7 @@ import React from "react";
 import style from './DialogItem.module.css'
 import {NavLink} from "react-router-dom";
 import {DialogType} from "../../../redux/state";
-import avatar from './avatar.jpg'
+import avatar from './avatar.png'
 
 type DialogItemType = DialogType
 
