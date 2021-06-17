@@ -6,6 +6,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Route} from 'react-router-dom';
 import {StoreType} from "./redux/store";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 type AppPropsType = {
     store: StoreType
@@ -25,7 +26,7 @@ function App(props: AppPropsType) {
                 />
 
                 <Route exact path='/dialogs'
-                       render={() => <Dialogs store={props.store}/>}
+                       render={() => <DialogsContainer store={props.store}/>}
                 />
             </div>
 
