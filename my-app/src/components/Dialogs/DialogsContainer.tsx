@@ -1,32 +1,33 @@
-import React, {ChangeEvent} from "react";
-import style from './Dialogs.module.css'
-import {DialogItem} from "./DialogItem/DialogItem";
-import {Message} from "./Message/Message";
-import {StoreType} from "../../redux/store";
+import React from "react";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/reducers/dialogs-reducers";
 import {Dialogs} from "./Dialogs";
+import {StoreType} from "../../redux/store";
+import {StoreContext} from "../../Store-context";
 
-type DialogsContainer = {
-    store: StoreType
-}
-
-export const DialogsContainer = (props: DialogsContainer) => {
-
-    const onAddMessage = () => {
-        props.store.dispatch(addMessageAC())
-    }
-
-    const onMessageChange = (text: string) => {
-        let action = updateNewMessageTextAC(text)
-        props.store.dispatch(action)
-    }
+export const DialogsContainer = () => {
 
     return (
-        <Dialogs onAddMessage={onAddMessage}
-                 updateNewMessageText={onMessageChange}
-                 messages={props.store._state.messagePage.messages}
-                 newMessageText={props.store._state.messagePage.newMessageText}
-                 dialogsItem={props.store._state.messagePage.dialogs}
-        />
+        <StoreContext.Consumer>
+            {
+                (store: StoreType) => {
+
+                    const onAddMessage = () => {
+                        store.dispatch(addMessageAC())
+                    }
+
+                    const onMessageChange = (text: string) => {
+                        let action = updateNewMessageTextAC(text)
+                        store.dispatch(action)
+                    }
+
+                    return <Dialogs onAddMessage={onAddMessage}
+                                    updateNewMessageText={onMessageChange}
+                                    messages={store.getState().messagePage.messages}
+                                    newMessageText={store.getState().messagePage.newMessageText}
+                                    dialogsItem={store.getState().messagePage.dialogs}
+                    />
+                }
+            }
+        </StoreContext.Consumer>
     )
 }
