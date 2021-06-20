@@ -1,33 +1,38 @@
 import React from "react";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/reducers/dialogs-reducers";
 import {Dialogs} from "./Dialogs";
-import {StoreType} from "../../redux/store";
-import {StoreContext} from "../../Store-context";
+import {FriendType, MessageType, StateType} from "../../redux/store";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
-export const DialogsContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-                (store: StoreType) => {
-
-                    const onAddMessage = () => {
-                        store.dispatch(addMessageAC())
-                    }
-
-                    const onMessageChange = (text: string) => {
-                        let action = updateNewMessageTextAC(text)
-                        store.dispatch(action)
-                    }
-
-                    return <Dialogs onAddMessage={onAddMessage}
-                                    updateNewMessageText={onMessageChange}
-                                    messages={store.getState().messagePage.messages}
-                                    newMessageText={store.getState().messagePage.newMessageText}
-                                    dialogsItem={store.getState().messagePage.dialogs}
-                    />
-                }
-            }
-        </StoreContext.Consumer>
-    )
+type mapStateToProps = {
+    messages: Array<MessageType>
+    dialogsItem: Array<FriendType>
+    newMessageText: string
 }
+
+type mapDispatchToProps = {
+    onAddMessage: () => void
+    updateNewMessageText: (text: string) => void
+}
+
+const mapStateToProps = (state: StateType): mapStateToProps => {
+    return {
+        messages: state.messagePage.messages,
+        dialogsItem: state.sidebar.friend,
+        newMessageText: state.messagePage.newMessageText,
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
+    return {
+        onAddMessage: () => {
+            dispatch(addMessageAC())
+        },
+        updateNewMessageText: (text: string) => {
+            dispatch(updateNewMessageTextAC(text))
+        },
+    }
+}
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);

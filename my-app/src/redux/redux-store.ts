@@ -3,7 +3,7 @@ import {dialogsReducer} from "./reducers/dialogs-reducers";
 import {profileReducer} from "./reducers/profile-reducers";
 import {sidebarReducer} from "./reducers/sidebar-reducers";
 
-export let reducers = combineReducers(
+export const reducer = combineReducers(
     {
         profilePage: profileReducer,
         messagePage: dialogsReducer,
@@ -11,4 +11,4 @@ export let reducers = combineReducers(
     }
 )
 
-export let store = createStore(reducers)
+export const store = createStore(reducer)

@@ -13,7 +13,7 @@ function App() {
         <div className="App-wrapper">
 
             <Header/>
-            <Navbar/>
+            {/*<Navbar/>*/}
 
             <div className='App-wrapper-content'>
                 <Route path='/profile'

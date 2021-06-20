@@ -5,7 +5,7 @@ const ADD_POST = 'ADD-POST';
 
 let initialState = {
     posts: [
-        {id: 1, title: 'Уволился с работы, учу JS и REACT!', likeCounts: 22},
+        {id: 1, title: 'Учу JS и REACT!', likeCounts: 22},
         {id: 2, title: 'Учу реакт 1 месяц, летим', likeCounts: 19},
     ],
     newPostText: ''
