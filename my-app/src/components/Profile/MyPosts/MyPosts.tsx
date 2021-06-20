@@ -41,6 +41,7 @@ export const MyPosts = (props: MyPostsType) => {
             <div>
                 { postElements }
             </div>
+
         </div>
     )
 }

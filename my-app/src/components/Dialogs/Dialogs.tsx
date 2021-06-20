@@ -15,10 +15,10 @@ type DialogsType = {
 export const Dialogs = (props: DialogsType) => {
 
     let dialogsElements = props.dialogsItem
-        .map(d => <DialogItem id={d.id} name={d.name}/>)
+        .map(d => <DialogItem id={d.id} name={d.name} key={d.id}/>)
 
     let messagesElements = props.messages
-        .map(m => <Message message={m.message}/>)
+        .map(m => <Message message={m.message} key={m.id}/>)
 
     const addMessage = () => {
         props.onAddMessage()
