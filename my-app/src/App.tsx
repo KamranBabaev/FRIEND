@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./components/Header/Header";
-import {Navbar} from "./components/Navbar/Navbar";
+import {} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Route} from 'react-router-dom';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {NavbarContainer} from "./components/Navbar/NavbarContainer";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <div className="App-wrapper">
 
             <Header/>
-            {/*<Navbar/>*/}
+            <NavbarContainer />
 
             <div className='App-wrapper-content'>
                 <Route path='/profile'
