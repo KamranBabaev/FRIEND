@@ -22,6 +22,9 @@ export const Navbar = (props: PropsType) => {
                     <NavLink activeClassName={style.activeLink} to='/profile'>Профиль</NavLink>
                 </div>
                 <div className={style.items}>
+                    <NavLink activeClassName={style.activeLink} to='/users'>Друзья</NavLink>
+                </div>
+                <div className={style.items}>
                     <NavLink activeClassName={style.activeLink} to='/dialogs'>Сообщения</NavLink>
                 </div>
                 <div className={style.items}>

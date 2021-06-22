@@ -1,4 +1,5 @@
 import {UserType} from "../../redux/reducers/users-reducers";
+import style from './Users.module.css'
 
 export type UsersPropsType = {
     users: Array<UserType>
@@ -8,26 +9,19 @@ export const Users = (props: UsersPropsType) => {
 
     return <div>
         {
-            props.users.map(u => <div key={u.id}>
-                    <span>
-                        <div>
-                            <img/>
-                        </div>
-                        <div>
-                            <button>follow</button>
-                        </div>
-                    </span>
+            props.users.map(u => <div className={style.users} key={u.id}>
 
-                    <span>
+                    <div className={style.avaAndBtn}>
+                        <img src={u.avatar} alt=''/>
+                        <button>follow</button>
+                    </div>
+
+                    <div className={style.info}>
                         <div>{u.fullName}</div>
                         <div>{u.status}</div>
-                    </span>
-
-                    <span>
                         <div>{u.location.country}</div>
                         <div>{u.location.city}</div>
-                    </span>
-
+                    </div>
                 </div>
             )
         }
