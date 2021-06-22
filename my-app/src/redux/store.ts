@@ -63,8 +63,8 @@ const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
-                {id: 1, title: 'Уволился с работы, учу JS и REACT!', likeCounts: 22},
-                {id: 2, title: 'Учу реакт 1 месяц, летим', likeCounts: 19},
+                {id: 1, title: 'Это первый пост для соц сети', likeCounts: 22},
+                {id: 2, title: 'Второй пост, креатив не твое...', likeCounts: 19},
             ],
             newPostText: ''
         },

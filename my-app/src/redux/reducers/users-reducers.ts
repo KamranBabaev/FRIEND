@@ -40,30 +40,6 @@ const SETUSERS = 'SET-USERS'
 
 const initialState = {
     users: [
-        {
-            id: 1,
-            fullName: 'Kamran Babaev',
-            avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-            followed: true,
-            status: 'Student',
-            location: {city: 'Saint-Petersburg', country: 'Russia'}
-        },
-        {
-            id: 2,
-            fullName: 'Alexey Petrov',
-            avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-            followed: true,
-            status: 'Student',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: 3,
-            fullName: 'Petr Vasiliev',
-            avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-            followed: true,
-            status: 'Student',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
     ],
 }
 
