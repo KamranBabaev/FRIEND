@@ -17,6 +17,7 @@ type mapDispatchToProps = {
 }
 
 const mapStateToProps = (state: StateType): mapStateToProps => {
+
     return {
         messages: state.messagePage.messages,
         dialogsItem: state.sidebar.friend,
