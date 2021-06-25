@@ -5,13 +5,13 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
-        {id: 1, name: 'Кларк'},
-        {id: 2, name: 'Питер'},
+        {id: 1, name: 'Василий'},
+        {id: 2, name: 'Петр'},
     ],
 
     messages: [
-        {id: 1, message: 'Хей, привет'},
-        {id: 2, message: 'Как у тебя дела,'},
+        {id: 1, message: 'Привет, как дела?'},
+        {id: 2, message: 'Пошли пройдемся!'},
     ],
     newMessageText: ''
 }
