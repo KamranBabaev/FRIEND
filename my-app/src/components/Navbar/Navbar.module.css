@@ -41,9 +41,9 @@
 }
 
 .friend img {
-    width: 45px;
-    border-radius: 45px;
-    display: flex;
+    width: 35px;
+    display: grid;
+    border-radius: 35px;
     margin-bottom: 10px;
     border: solid 2px black;
 
@@ -51,8 +51,8 @@
 
 .friend {
     float: left;
-    margin: 10px 10px 30px 10px;
-    text-align: center;
+    margin: 10px;
+    font-size: 14px;
 }
 
 .titleFriends {
