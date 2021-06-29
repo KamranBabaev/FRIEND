@@ -39,8 +39,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SETUSERS = 'SET-USERS'
 
 const initialState = {
-    users: [
-    ],
+    users: [],
 }
 
 export const usersReducer = (state: UsersType = initialState, action: actionType): UsersType => {
