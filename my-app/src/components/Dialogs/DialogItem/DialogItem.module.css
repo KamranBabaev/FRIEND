@@ -2,6 +2,7 @@
     padding: 10px 0;
     display: grid;
     margin: 15px 0 0 15px;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 .dialog a, .dialog a:link, .dialog a:visited {

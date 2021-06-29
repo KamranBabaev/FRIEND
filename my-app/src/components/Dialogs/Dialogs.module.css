@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 3fr 6fr;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 .d_items, .messages {
