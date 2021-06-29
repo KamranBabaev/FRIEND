@@ -1,6 +1,7 @@
 import React from "react";
 import style from './Post.module.css'
 import avatar from './avatar.jpg'
+import liked from './liked.svg'
 
 type PostPropsType = {
     id: number
@@ -11,10 +12,12 @@ type PostPropsType = {
 export const Post = (props: PostPropsType) => {
     return (
         <div className={style.posts}>
-            <img alt='' src={avatar}/>{props.title}<br/>
-            <span>
-                like {props.likeCounts}
-            </span>
+            <img className={style.imgAvatar} alt='' src={avatar}/>
+            <div className={style.title}>{props.title}</div>
+            <div className={style.likesBlock}>
+                <img className={style.liked} src={liked} alt=''/>
+                {props.likeCounts}
+            </div>
         </div>
     )
 }

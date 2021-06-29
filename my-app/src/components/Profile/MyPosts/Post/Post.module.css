@@ -1,10 +1,25 @@
-.posts img {
+.posts {
+    display: grid;
+    margin-top: 30px;
+}
+
+.imgAvatar {
     width: 45px;
     border-radius: 45px;
     border: solid 2px black;
 }
 
-.posts {
-    padding-top: 20px;
+.title {
+    margin: 5px;
 }
+
+.likesBlock {
+    display: flex;
+    align-items: center;
+}
+
+.likesBlock img {
+    margin-right: 5px;
+}
+
 

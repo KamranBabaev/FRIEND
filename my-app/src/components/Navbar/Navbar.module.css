@@ -2,7 +2,7 @@
     font-size: 18px;
     grid-area: nav;
     background-color: white;
-    border-right: solid 1px #1e7b7f;
+    border-right: solid 1px #b3b3b3;
     font-weight: 500;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .items {
-    padding: 10px 0 10px 15px;
+    padding: 20px 0 0 15px;
     cursor: pointer;
     font-size: 18px;
     font-weight: 400;
@@ -62,7 +62,7 @@
 .titleFriends {
     padding: 10px;
     font-weight: 400;
-    border-bottom: 1px solid #a5a5a5;
+    border-top: 1px solid #b3b3b3;
 }
 
 
