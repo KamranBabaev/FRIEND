@@ -16,12 +16,12 @@
     font-size: 18px;
     font-weight: 400;
     color: black;
-    transition: linear 100ms;
+    transition: linear 80ms;
 }
 
 .items:hover {
-    transform: translateY(-3px);
-    transition: linear 100ms;
+    transform: translateX(10px);
+    transition: linear 80ms;
 }
 
 .items a {
