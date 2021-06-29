@@ -30,6 +30,7 @@ export const MyPosts = (props: MyPostsType) => {
             <div className={style.textForm}>
                 <textarea value={props.newPostText}
                           onChange={onPostOnChange}
+                          placeholder='новый пост...'
                 />
 
                 <div className={style.buttons}>

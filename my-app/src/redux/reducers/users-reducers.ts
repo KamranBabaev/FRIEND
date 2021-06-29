@@ -1,4 +1,3 @@
-
 type actionType = followType | unFollowType | setUsersType
 
 type followType = {

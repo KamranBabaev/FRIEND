@@ -2,22 +2,28 @@
     padding: 10px;
 }
 
-.textForm textarea{
+.textForm textarea {
     min-width: 800px;
-    max-width: 1000px;
-    min-height: 70px;
+    max-width: 1200px;
+    min-height: 100px;
     margin: 0;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #9a9a9a;
+    border-radius: 5px;
+    background-color: #fafafa;
+    font-size: 14px;
 }
 
 .buttons button {
-    margin: 0;
+    margin-right: 5px;
     width: 100px;
     height: 25px;
     cursor: pointer;
     font-family: cursive;
     font-weight: 700;
     background-color: #ffffff;
-    border: solid 1px #1f1f1f;
+    border: solid 2px #9a9a9a;
     border-radius: 5px;
     transition: linear 70ms;
 }
