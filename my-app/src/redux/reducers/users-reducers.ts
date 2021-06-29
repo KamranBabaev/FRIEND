@@ -20,18 +20,21 @@ type UsersType = {
     users: Array<UserType>
 }
 
-type LocationType = {
-    city: string
-    country: string
-}
+// type LocationType = {
+//     city: string
+//     country: string
+// }
 
 export type UserType = {
+    name: string
     id: number
-    fullName: string
-    avatar: string
-    followed: boolean
+    photos: {
+        small: string
+        large: string
+    }
     status: string
-    location: LocationType
+    followed: boolean
+
 }
 
 const FOLLOW = 'FOLLOW'

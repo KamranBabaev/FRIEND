@@ -9,7 +9,7 @@ export const ProfileInfo = () => {
                 <img src={avatar}/>
                 <div className={style.inform}>
                     <div className={style.name}>КАМРАН БАБАЕВ</div>
-                    возраст: 27 лет<br/>город: Санкт-Петербург
+                    возраст: 27 лет<br/>статус: студент<br/>город: Санкт-Петербург, Россия
                 </div>
             </div>
         </div>

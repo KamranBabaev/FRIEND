@@ -3,7 +3,7 @@
     grid-area: nav;
     background-color: white;
     border-right: solid 1px #1e7b7f;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .navbarElements {
@@ -14,21 +14,24 @@
     padding: 10px 0 10px 15px;
     cursor: pointer;
     font-size: 18px;
-    font-weight: 600;
-    transition: linear 80ms;
+    font-weight: 400;
     color: black;
+    transition: linear 100ms;
 }
 
 .items:hover {
-    border: solid 1px #1e7b7f;
-    box-shadow: 0 0 5px rgba(30, 123, 127, 0.7);
-    transition: linear 80ms;
-    background-color: #f8f8f8;
+    transform: translateY(-3px);
+    transition: linear 100ms;
 }
 
 .items a {
+    display: flex;
     text-decoration: none;
     color: black;
+}
+
+.items img {
+    margin-right: 20px;
 }
 
 .items a:link, a:visited {
@@ -41,11 +44,12 @@
 }
 
 .friend img {
-    width: 35px;
+    width: 45px;
+    height: 45px;
     display: grid;
-    border-radius: 35px;
+    border-radius: 45px;
     margin-bottom: 10px;
-    border: solid 2px black;
+    border: solid 1px black;
 
 }
 
@@ -57,7 +61,8 @@
 
 .titleFriends {
     padding: 10px;
-    font-weight: 600;
+    font-weight: 400;
+    border-bottom: 1px solid #a5a5a5;
 }
 
 

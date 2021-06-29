@@ -1,5 +1,7 @@
 import {UserType} from "../../redux/reducers/users-reducers";
 import style from './Users.module.css'
+import axios from "axios";
+import avatar from './avatarUsers.jpg'
 
 export type UsersPropsType = {
     users: Array<UserType>
@@ -11,33 +13,8 @@ export type UsersPropsType = {
 export const Users = (props: UsersPropsType) => {
 
     if (props.users.length === 0) {
-        props.setUsers([
-                {
-                    id: 1,
-                    fullName: 'Kamran Babaev',
-                    avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-                    followed: true,
-                    status: 'Student',
-                    location: {city: 'Saint-Petersburg', country: 'Russia'}
-                },
-                {
-                    id: 2,
-                    fullName: 'Alexey Petrov',
-                    avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-                    followed: true,
-                    status: 'Student',
-                    location: {city: 'Moscow', country: 'Russia'}
-                },
-                {
-                    id: 3,
-                    fullName: 'Petr Vasiliev',
-                    avatar: 'https://storage.theoryandpractice.ru/tnp/uploads/image_unit/000/156/586/image/base_87716f252d.jpg',
-                    followed: true,
-                    status: 'Student',
-                    location: {city: 'Minsk', country: 'Belarus'}
-                },
-            ]
-        )
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(resp => props.setUsers(resp.data.items))
     }
 
     return <div>
@@ -45,7 +22,7 @@ export const Users = (props: UsersPropsType) => {
             props.users.map(u => <div className={style.users} key={u.id}>
 
                     <div className={style.avaAndBtn}>
-                        <img src={u.avatar} alt=''/>
+                        <img src={u.photos.small !== null ? u.photos.small : avatar } alt=''/>
                         {
                             u.followed
                                 ? <button onClick={() => {
@@ -59,10 +36,9 @@ export const Users = (props: UsersPropsType) => {
                     </div>
 
                     <div className={style.info}>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>Санкт-Петербург, Россия</div>
                     </div>
                 </div>
             )
