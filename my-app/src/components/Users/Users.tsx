@@ -12,17 +12,20 @@ export type UsersPropsType = {
 
 export const Users = (props: UsersPropsType) => {
 
-    if (props.users.length === 0) {
-
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(resp => props.setUsers(resp.data.items))
+    const getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(resp => props.setUsers(resp.data.items))
+        }
     }
 
     return <div>
+        <button onClick={getUsers}>get users</button>
         {
             props.users.map(u => <div className={style.users} key={u.id}>
 
                     <div className={style.avaAndBtn}>
-                        <img src={u.photos.small !== null ? u.photos.small : avatar } alt=''/>
+                        <img src={u.photos.small !== null ? u.photos.small : avatar} alt=''/>
                         {
                             u.followed
                                 ? <button onClick={() => {
@@ -36,9 +39,11 @@ export const Users = (props: UsersPropsType) => {
                     </div>
 
                     <div className={style.info}>
-                        <div>{u.name}</div>
+                        <div>имя {u.name}</div>
                         <div>{u.status}</div>
-                        <div>Санкт-Петербург, Россия</div>
+                        <div>возраст: 27 лет</div>
+                        <div>статус: студент</div>
+                        <div>локация: Санкт-Петербург, Россия</div>
                     </div>
                 </div>
             )
