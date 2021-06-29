@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/FRIEND/static/css/main.202cf27c.chunk.css",
-    "main.js": "/FRIEND/static/js/main.93deb054.chunk.js",
-    "main.js.map": "/FRIEND/static/js/main.93deb054.chunk.js.map",
+    "main.css": "/FRIEND/static/css/main.553df04d.chunk.css",
+    "main.js": "/FRIEND/static/js/main.0c0e0af7.chunk.js",
+    "main.js.map": "/FRIEND/static/js/main.0c0e0af7.chunk.js.map",
     "runtime-main.js": "/FRIEND/static/js/runtime-main.402cb7ef.js",
     "runtime-main.js.map": "/FRIEND/static/js/runtime-main.402cb7ef.js.map",
-    "static/js/2.8e1086fe.chunk.js": "/FRIEND/static/js/2.8e1086fe.chunk.js",
-    "static/js/2.8e1086fe.chunk.js.map": "/FRIEND/static/js/2.8e1086fe.chunk.js.map",
+    "static/js/2.d2864564.chunk.js": "/FRIEND/static/js/2.d2864564.chunk.js",
+    "static/js/2.d2864564.chunk.js.map": "/FRIEND/static/js/2.d2864564.chunk.js.map",
     "index.html": "/FRIEND/index.html",
-    "static/css/main.202cf27c.chunk.css.map": "/FRIEND/static/css/main.202cf27c.chunk.css.map",
-    "static/js/2.8e1086fe.chunk.js.LICENSE.txt": "/FRIEND/static/js/2.8e1086fe.chunk.js.LICENSE.txt",
+    "static/css/main.553df04d.chunk.css.map": "/FRIEND/static/css/main.553df04d.chunk.css.map",
+    "static/js/2.d2864564.chunk.js.LICENSE.txt": "/FRIEND/static/js/2.d2864564.chunk.js.LICENSE.txt",
     "static/media/avatar.35b2083a.jpg": "/FRIEND/static/media/avatar.35b2083a.jpg",
     "static/media/avatar.76d2819f.jpg": "/FRIEND/static/media/avatar.76d2819f.jpg",
     "static/media/avatar.8f6f0a61.png": "/FRIEND/static/media/avatar.8f6f0a61.png",
     "static/media/avatar.fd7aeb24.jpg": "/FRIEND/static/media/avatar.fd7aeb24.jpg",
     "static/media/avatarUsers.51ae38f2.jpg": "/FRIEND/static/media/avatarUsers.51ae38f2.jpg",
     "static/media/friends.cc1aa831.svg": "/FRIEND/static/media/friends.cc1aa831.svg",
+    "static/media/liked.8d60aaea.svg": "/FRIEND/static/media/liked.8d60aaea.svg",
     "static/media/messages.7be6e02d.svg": "/FRIEND/static/media/messages.7be6e02d.svg",
     "static/media/music.af606310.svg": "/FRIEND/static/media/music.af606310.svg",
     "static/media/news.12440c92.svg": "/FRIEND/static/media/news.12440c92.svg",
@@ -24,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.402cb7ef.js",
-    "static/js/2.8e1086fe.chunk.js",
-    "static/css/main.202cf27c.chunk.css",
-    "static/js/main.93deb054.chunk.js"
+    "static/js/2.d2864564.chunk.js",
+    "static/css/main.553df04d.chunk.css",
+    "static/js/main.0c0e0af7.chunk.js"
   ]
 }
