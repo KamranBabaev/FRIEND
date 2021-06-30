@@ -1,22 +1,13 @@
-body {
-  width: auto;
-  margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px;
-  background-color: white;
-}
-
 .App-wrapper {
   display: grid;
   grid-template-areas:
     'hd hd'
     'nav pr';
   grid-template-rows: 70px 1fr;
-  grid-template-columns: 2fr 11fr;
-  grid-gap: 0;
+  grid-template-columns: 3fr 12fr;
+  background-color: white;
 }
 
 .App-wrapper-content {
   grid-area: pr;
-  background-color: white;
 }

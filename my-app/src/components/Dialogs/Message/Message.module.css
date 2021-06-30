@@ -1,57 +1,10 @@
 .messages {
-    width: 800px
-}
-
-.messages button {
-    margin: 0;
-    width: 100px;
-    height: 25px;
-    cursor: pointer;
-    font-family: cursive;
-    font-weight: 700;
-    background-color: #ffffff;
-    border: solid 1px #1f1f1f;
-    border-radius: 5px;
-    transition: linear 70ms;
-}
-
-.messages button:hover {
-    background-color: #1e7b7f;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-    transition: linear 70ms;
-}
-
-.item textarea {
-    outline: none;
-    margin: 10px 0;
-    padding: 10px 10px;
-    min-width: 500px;
-    max-width: 800px;
-    min-height: 50px;
-    max-height: 2500px;
-    border: solid 2px #3d3d3d;
-    border-radius: 15px 15px 15px 0;
-    background-color: #ffffff;
-}
-
-.message {
-    margin: 10px 0;
-    padding: 10px 10px;
-    min-width: 500px;
-    max-width: 800px;
-    min-height: 50px;
-    max-height: 2500px;
-    border: solid 2px #3d3d3d;
-    border-radius: 15px 15px 15px 0;
-    background-color: rgba(30, 123, 127, 0.1);
-}
-
-.messages {
-    padding: 10px;
+    padding: 15px;
     margin-top: 20px;
-    width: 700px;
-    min-height: 70px;
-    border: solid 2px #1e7b7f;
+    margin-right: 40px;
+    width: 600px;
+    min-height: 50px;
+    border: solid 2px #929292;
     border-radius: 20px 20px 20px 0;
 }
 

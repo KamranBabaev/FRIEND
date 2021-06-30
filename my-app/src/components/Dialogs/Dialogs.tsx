@@ -30,23 +30,24 @@ export const Dialogs = (props: DialogsType) => {
     }
 
     return (
-        <div className={style.dialogs}>
+        <>
+            <div className={style.dialogs}>
 
-            <div className={style.d_items}>
-                {dialogsElements}
+                <div className={style.d_items}>
+                    {dialogsElements}
+                </div>
+
+                <div className={style.messages}>
+                    {messagesElements}
+                </div>
+
             </div>
-
-            <div className={style.messages}>
-                {messagesElements}
-            </div>
-
             <div className={style.item}>
                 <textarea value={props.newMessageText} onChange={onMessageChange} placeholder='ввод...'/>
                 <div>
                     <button onClick={addMessage}>SEND</button>
                 </div>
             </div>
-
-        </div>
+        </>
     )
 }

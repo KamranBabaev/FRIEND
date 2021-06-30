@@ -1,9 +1,39 @@
 .dialogs {
     display: grid;
     grid-template-columns: 3fr 6fr;
-    font-family: "Source Sans Pro", sans-serif;
+    margin-left: 10px;
 }
 
-.d_items, .messages {
-    padding: 25px 0;
+.item {
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.item textarea {
+    padding: 10px;
+    min-height: 50px;
+    min-width: 600px;
+    border: solid 2px #929292;
+    border-radius: 10px 10px 10px 0;
+    outline: none;
+}
+
+
+.item button {
+    margin-right: 5px;
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+    background-color: #ffffff;
+    border: solid 2px #9a9a9a;
+    border-radius: 5px;
+    transition: linear 70ms;
+}
+
+.item button:hover {
+    background-color: #1e7b7f;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    transition: linear 70ms;
 }
