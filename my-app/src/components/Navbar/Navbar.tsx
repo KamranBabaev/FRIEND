@@ -16,7 +16,7 @@ type PropsType = {
 
 export const Navbar = (props: PropsType) => {
 
-    const friendElements = props.sidebar.friend.map(f => <div className={style.friend}>
+    const friendElements = props.sidebar.friend.map(f => <div className={style.friend} key={f.id}>
         <img src={avatar} alt=''/>
         {f.name}
     </div>)

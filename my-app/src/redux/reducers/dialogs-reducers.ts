@@ -1,7 +1,15 @@
-import {ActionType, AddMessageAT, AddNewMessageAT, MessageType} from "../store";
-
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
+type AddMessageAT = {
+    type: 'ADD-MESSAGE'
+}
+type AddNewMessageAT = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    newMessageText: string
+}
+
+type ActionType = AddMessageAT | AddNewMessageAT
 
 let initialState = {
     dialogs: [
@@ -20,7 +28,7 @@ export const dialogsReducer = (state: any = initialState, action: ActionType) =>
 
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage: MessageType = {id: 3, message: state.newMessageText}
+            let newMessage = {id: 3, message: state.newMessageText}
             return {
                 ...state,
                 dialogs: [...state.dialogs],

@@ -10,7 +10,7 @@ const mapStateToProps = (state: StateType) => {
 
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        newPostText: state.profilePage.text
     }
 
 }

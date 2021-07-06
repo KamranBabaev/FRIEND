@@ -1,6 +1,7 @@
 import {profileReducer} from "./reducers/profile-reducers";
 import {dialogsReducer} from "./reducers/dialogs-reducers";
 import {sidebarReducer} from "./reducers/sidebar-reducers";
+import any = jasmine.any;
 
 export type SidebarType = {
     friend: Array<FriendType>
@@ -16,7 +17,8 @@ export type PostsType = {
 }
 export type ProfilePageType = {
     posts: Array<PostsType>
-    newPostText: string
+    text: string
+    profile: any
 }
 export type DialogType = {
     id: number
@@ -25,6 +27,7 @@ export type DialogType = {
 export type MessageType = {
     id: number
     message: string
+
 }
 export type MessagePageType = {
     dialogs: Array<DialogType>
@@ -43,20 +46,14 @@ export type AddNewPostAT = {
     type: 'ADD-NEW-POST-TEXT'
     newPostText: string
 }
-export type AddMessageAT = {
-    type: 'ADD-MESSAGE'
-}
-export type AddNewMessageAT = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    newMessageText: string
-}
-export type ActionType = AddPostAT | AddMessageAT | AddNewPostAT | AddNewMessageAT
+
+export type ActionType = AddPostAT | AddNewPostAT
 export type StoreType = {
     _state: StateType
     _callSubscriber: (state: StateType) => void
     getState: () => StateType
     subscribe: (observer: any) => void
-    dispatch: (action: ActionType) => void
+    dispatch: (action: any) => void
 }
 
 const store: StoreType = {
@@ -66,7 +63,8 @@ const store: StoreType = {
                 {id: 1, title: 'Это первый пост для соц сети', likeCounts: 22},
                 {id: 2, title: 'Второй пост, креатив не твое...', likeCounts: 19},
             ],
-            newPostText: ''
+            text: '',
+            profile: any
         },
 
         messagePage: {
