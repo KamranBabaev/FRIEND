@@ -13,6 +13,13 @@
     font-weight: 700;
 }
 
+.loginBlock a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
 .searchBlock {
     display: flex;
     align-items: center;
