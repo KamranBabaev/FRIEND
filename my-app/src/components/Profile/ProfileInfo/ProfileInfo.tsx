@@ -25,17 +25,18 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             </div>
 
             <div className={style.user}>
-                <img src={props.profile.photos.large} alt=''/>
                 <div className={style.inform}>
                     <img src={props.profile.photos.small} alt=''/>
-                    <div className={style.name}>Имя: {props.profile.fullName}</div>
+                    <div className={style.name}>{props.profile.fullName}</div>
                     <div className={style.aboutMe}>Обо мне: {props.profile.aboutMe}</div>
-                    <div className={style.jobStatus}>{props.profile.lookingForAJob
-                        ? <div>Статус: работаю</div>
-                        : <div>Статус: в поисках работы</div>}
+                    <div className={style.jobStatus}>
+                        {
+                            props.profile.lookingForAJob
+                                ? <div>Статус: работаю</div>
+                                : <div>Статус: в поисках работы</div>
+                        }
                     </div>
                     <div className={style.contacts}>Мой инстаграмм: {props.profile.contacts.instagram}</div>
-
                 </div>
             </div>
 

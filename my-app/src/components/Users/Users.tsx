@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Users.module.css";
-import avatar from "./avatarUsers.jpg";
+import avatar from "./user_icon.png";
 import {UserType} from "../../redux/reducers/users-reducers";
 import { NavLink } from "react-router-dom";
 
@@ -58,11 +58,9 @@ export const Users = (props: UsersPropsType) => {
                     </div>
 
                     <div className={style.info}>
-                        <div>имя {u.name}</div>
-                        <div>{u.status}</div>
-                        <div>возраст: 27 лет</div>
-                        <div>статус: студент</div>
-                        <div>локация: Санкт-Петербург, Россия</div>
+                        <div>имя: <b>{u.name}</b></div>
+                        <div>статус: в поисках работы</div>
+                        <div>город: Санкт-Петербург</div>
                     </div>
                 </div>
             )

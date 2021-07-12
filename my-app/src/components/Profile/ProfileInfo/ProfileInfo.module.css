@@ -1,9 +1,14 @@
+.profileInfo {
+    display: flex;
+}
+
 .user {
     margin: 25px;
 }
 
 .user img {
-    width: 200px;
+    width: 230px;
+    height: 200px;
 }
 
 .description {
@@ -12,4 +17,5 @@
 
 .name {
     font-family: Impact, sans-serif;
+    text-transform: uppercase;
 }
