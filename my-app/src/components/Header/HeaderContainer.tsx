@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {setAuthUserDataAC} from "../../redux/reducers/auth-reducers";
 import {withRouter} from "react-router-dom";
 import {RootReduxStateType} from "../../redux/redux-store";
+import {usersAPI} from "../../api/api";
 
 type MapStatePropsType = {
     login: string | null
@@ -19,12 +20,9 @@ type HeaderContainerPropsType = RouteComponentProps<{ userID?: string }> & {
 class HeaderContainer extends React.Component<HeaderContainerPropsType & MapStatePropsType> {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,
-            {withCredentials: true}
-        )
-            .then(resp => {
-                if (resp.data.resultCode === 0) {
-                    let {id, email, login} = resp.data.data
+            usersAPI.getMe().then(data=> {
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data
                     this.props.setAuthUserDataAC(id, email, login)
                 }
             })

@@ -2,7 +2,8 @@ import React from "react";
 import style from "./Users.module.css";
 import avatar from "./user_icon.png";
 import {UserType} from "../../redux/reducers/users-reducers";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {usersAPI} from "../../api/api";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -28,7 +29,7 @@ export const Users = (props: UsersPropsType) => {
         <div className={style.pagination}>
             {
                 pages.map(page => {
-                    return <span className={props.currentPage === page ? `${style.selectedPage}` : ''}
+                    return <span className={props.currentPage === page ? style.selectedPage : ''}
                                  onClick={(event) => {
                                      props.onPageChanged(page)
                                  }}>
@@ -47,12 +48,21 @@ export const Users = (props: UsersPropsType) => {
                         </NavLink>
                         {
                             u.followed
+
                                 ? <button onClick={() => {
-                                    props.unfollow(u.id)
+                                        usersAPI.isUnfollow(u.id).then(data => {
+                                            if (data.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                        })
                                 }}>unfollow</button>
 
                                 : <button onClick={() => {
-                                    props.follow(u.id)
+                                    usersAPI.isFollow(u.id).then(data => {
+                                            if (data.resultCode === 0) {
+                                                props.follow(u.id)
+                                            }
+                                        })
                                 }} style={{background: 'coral'}}>follow</button>
                         }
                     </div>
