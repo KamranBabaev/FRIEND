@@ -1,7 +1,6 @@
 import React from "react";
 import {Header} from "./Header";
 import {RouteComponentProps} from "react-router";
-import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserDataAC} from "../../redux/reducers/auth-reducers";
 import {withRouter} from "react-router-dom";
