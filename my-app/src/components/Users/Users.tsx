@@ -3,7 +3,7 @@ import style from "./Users.module.css";
 import avatar from "./user_icon.png";
 import {UserType} from "../../redux/reducers/users-reducers";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
+import {Preloader} from "../common/Preloader/Preolader";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -13,8 +13,10 @@ type UsersPropsType = {
     totalUsersCount: number
     currentPage: number
     onPageChanged: (pageNumber: number) => void
-    toggleIsFollowingProgress: (followingInProgress: boolean, userId: number) => void
     followingInProgress: Array<number>
+    isFetching: boolean
+    followMode: (id: number) => void
+    unfollowMode: (id: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -46,32 +48,20 @@ export const Users = (props: UsersPropsType) => {
 
                     <div className={style.avaAndBtn}>
                         <NavLink to={'/profile/' + u.id}>
+                            {props.isFetching ? <Preloader/> : null}
                             <img src={u.photos.small !== null ? u.photos.small : avatar} alt=''/>
                         </NavLink>
                         {
                             u.followed
 
                                 ? <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {
-                                              props.toggleIsFollowingProgress(true, u.id)
-                                              usersAPI.isUnfollow(u.id).then(data => {
-                                                  if (data.resultCode === 0) {
-                                                      props.unfollow(u.id)
-                                                  }
-                                                  props.toggleIsFollowingProgress(false, u.id)
-                                              })
-                                          }}>unfollow</button>
+                                          onClick={() => {props.unfollowMode(u.id)}}>
+                                    unfollow</button>
 
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                          onClick={() => {
-                                              props.toggleIsFollowingProgress(true,u.id)
-                                              usersAPI.isFollow(u.id).then(data => {
-                                                  if (data.resultCode === 0) {
-                                                      props.follow(u.id)
-                                                  }
-                                                  props.toggleIsFollowingProgress(false,u.id)
-                                              })
-                                          }} style={{background: 'coral'}}>follow</button>
+                                          onClick={() => {props.followMode(u.id)}}
+                                          style={{background: 'coral'}}>
+                                    follow</button>
                         }
                     </div>
 

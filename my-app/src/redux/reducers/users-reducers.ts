@@ -1,3 +1,5 @@
+import {usersAPI} from "../../api/api";
+
 type actionType =
     followType
     | unFollowType
@@ -148,3 +150,38 @@ export const toggleIsFollowingProgress = (isFetching: boolean, userId: number): 
     userId,
 })
 
+
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFetching(true))
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalUsersCount(data.totalCount))
+        })
+    }
+}
+
+export const followMode = (id: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFollowingProgress(true, id))
+        usersAPI.isFollow(id).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(follow(id))
+            }
+            dispatch(toggleIsFollowingProgress(false, id))
+        })
+    }
+}
+
+export const unfollowMode = (id: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFollowingProgress(true, id))
+        usersAPI.isUnfollow(id).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollow(id))
+            }
+            dispatch(toggleIsFollowingProgress(false, id))
+        })
+    }
+}
