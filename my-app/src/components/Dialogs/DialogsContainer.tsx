@@ -5,6 +5,7 @@ import {FriendType, MessageType} from "../../redux/store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {withRouter} from "react-router-dom";
 
 type mapStateToProps = {
     messages: Array<MessageType>
@@ -37,6 +38,8 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-export const AuthRedirectComponent = withAuthRedirect(Dialogs)
+const withUrlDataContainerComponent = withRouter(AuthRedirectComponent)
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent);
