@@ -1,4 +1,6 @@
 import {PostsType} from "../store";
+import {usersAPI} from "../../api/api";
+import {follow, toggleIsFollowingProgress} from "./users-reducers";
 
 type ActionType = AddPostAT | setUsersProfileAT | updateNewPostTextAC
 
@@ -67,3 +69,11 @@ export const addPostAC = (): AddPostAT => ({type: ADD_POST})
 export const setUsersProfile = (profile: any): setUsersProfileAT => ({type: SET_USER_PROFILE, profile})
 
 export const updateNewPostTextAC = (text: string): updateNewPostTextAC => ({type: ADD_NEW_POST_TEXT, text})
+
+export const getUsersProfile = (userId: string) => {
+    return (dispatch: any) => {
+        usersAPI.getUserByID(userId).then(data => {
+            dispatch(setUsersProfile(data))
+        })
+    }
+}

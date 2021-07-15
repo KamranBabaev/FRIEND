@@ -1,9 +1,10 @@
 import React from "react";
 import {addMessageAC, updateNewMessageTextAC} from "../../redux/reducers/dialogs-reducers";
 import {Dialogs} from "./Dialogs";
-import {FriendType, MessageType, StateType} from "../../redux/store";
+import {FriendType, MessageType} from "../../redux/store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateToProps = {
     messages: Array<MessageType>
@@ -16,7 +17,7 @@ type mapDispatchToProps = {
     updateNewMessageText: (text: string) => void
 }
 
-const mapStateToProps = (state: StateType): mapStateToProps => {
+const mapStateToProps = (state: any): mapStateToProps => {
 
     return {
         messages: state.messagePage.messages,
@@ -36,4 +37,6 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+
+export const AuthRedirectComponent = withAuthRedirect(Dialogs)

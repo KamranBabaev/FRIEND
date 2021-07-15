@@ -1,3 +1,5 @@
+import {usersAPI} from "../../api/api";
+
 type actionType = any
 
 const SET_USER_DATA = 'SET-USER-DATA'
@@ -47,3 +49,14 @@ export const setAuthUserDataAC = (userID: string | null, email: string | null, l
     {type: SET_USER_DATA, data: {userID, email, login}}
 )
 
+
+export const getAuthUserDataAC = () => {
+    return (dispatch: any) => {
+        usersAPI.getMe().then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data
+                dispatch(setAuthUserDataAC(id, email, login))
+            }
+        })
+    }
+}

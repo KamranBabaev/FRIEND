@@ -12,7 +12,7 @@ export const reducer = combineReducers(
         messagePage: dialogsReducer,
         sidebar: sidebarReducer,
         usersPage: usersReducer,
-        authReducer: authReducer
+        auth: authReducer
     }
 )
 
