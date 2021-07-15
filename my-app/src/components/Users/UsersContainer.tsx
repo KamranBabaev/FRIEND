@@ -1,10 +1,12 @@
 import {connect} from "react-redux";
 import {
-    follow, followMode,
+    follow,
+    followMode,
     getUsers,
     setCurrentPage,
     toggleIsFollowingProgress,
-    unfollow, unfollowMode,
+    unfollow,
+    unfollowMode,
     UserType
 } from "../../redux/reducers/users-reducers";
 import {RootReduxStateType} from "../../redux/redux-store";
@@ -12,6 +14,7 @@ import React from "react";
 
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preolader";
+import {compose} from "redux";
 
 type mapStateType = {
     users: Array<UserType>
@@ -36,7 +39,6 @@ type UsersPropsType = {
     followMode: (id: number) => void
     unfollowMode: (id: number) => void
 }
-
 
 class UsersContainer extends React.Component<UsersPropsType> {
 
@@ -83,7 +85,10 @@ const mapStateToProps = (state: RootReduxStateType): mapStateType => {
     }
 }
 
-
-export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsers, followMode, unfollowMode}
-)(UsersContainer);
+export default compose(
+    connect(mapStateToProps, {
+            follow, unfollow, setCurrentPage, toggleIsFollowingProgress,
+            getUsers, followMode, unfollowMode
+        }
+    )
+)(UsersContainer)

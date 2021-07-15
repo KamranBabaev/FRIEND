@@ -3,9 +3,9 @@ import {addMessageAC, updateNewMessageTextAC} from "../../redux/reducers/dialogs
 import {Dialogs} from "./Dialogs";
 import {FriendType, MessageType} from "../../redux/store";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {withRouter} from "react-router-dom";
+import {RootReduxStateType} from "../../redux/redux-store";
 
 type mapStateToProps = {
     messages: Array<MessageType>
@@ -18,7 +18,7 @@ type mapDispatchToProps = {
     updateNewMessageText: (text: string) => void
 }
 
-const mapStateToProps = (state: any): mapStateToProps => {
+const mapStateToProps = (state: RootReduxStateType): mapStateToProps => {
 
     return {
         messages: state.messagePage.messages,
@@ -38,8 +38,8 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs)
+export const DialogsContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs)
 
-const withUrlDataContainerComponent = withRouter(AuthRedirectComponent)
-
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent);
