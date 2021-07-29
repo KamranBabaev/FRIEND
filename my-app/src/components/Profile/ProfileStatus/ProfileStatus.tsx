@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React, {FormEvent} from "react";
 
 type ProfileStatusPropsType = {
   status: string
@@ -20,11 +20,19 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
     this.setState({editMode: false})
     this.props.userUpdateStatus(this.state.status)
   }
-  onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
+  onStatusChange = (e: FormEvent<HTMLInputElement>) => {
     this.setState({
       status: e.currentTarget.value
     })
+  }
 
+  componentDidUpdate(prevProps: Readonly<ProfileStatusPropsType>,
+                     prevState: Readonly<{}>) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      })
+    }
   }
 
   render() {
@@ -33,18 +41,19 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
           {
             this.state.editMode
                 ? <div>
-                  <input
-                      value={this.props.status}
+                    <input
                       onChange={this.onStatusChange}
+                      value={this.state.status}
                       onBlur={this.deactivateEditMode}
+                      type='text'
                       autoFocus
-                  />
-                </div>
+                    />
+                  </div>
                 : <div>
                     <span onDoubleClick={this.activateEditMode}>
-                      {this.props.status}
+                      {this.state.status || 'статус не заполнен...'}
                     </span>
-                </div>
+                  </div>
           }
         </div>
     )

@@ -34,12 +34,10 @@ export type ProfileDataType = {
     large: string
   }
 }
-
 type MapStateToPropsType = {
   profile: ProfileDataType
   status: string
 }
-
 type MapDispatchToPropsType = {
   getUsersProfile: (userId: string) => void
   getUserStatus: (userId: string) => void
@@ -48,9 +46,7 @@ type MapDispatchToPropsType = {
 type ProfileContainerPropsType = RouteComponentProps<{ userId?: string }>
     & MapStateToPropsType & MapDispatchToPropsType
 
-class ProfileContainer extends React.Component<ProfileContainerPropsType
-    & MapStateToPropsType
-    & MapDispatchToPropsType> {
+class ProfileContainer extends React.Component<ProfileContainerPropsType> {
 
   componentDidMount() {
     let userId = this.props.match.params.userId

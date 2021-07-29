@@ -1,7 +1,6 @@
 import {profileReducer} from "./reducers/profile-reducers";
 import {dialogsReducer} from "./reducers/dialogs-reducers";
 import {sidebarReducer} from "./reducers/sidebar-reducers";
-import any = jasmine.any;
 import {ProfileDataType} from "../components/Profile/ProfileContainer";
 
 export type SidebarType = {
@@ -19,7 +18,7 @@ export type PostsType = {
 export type ProfilePageType = {
     posts: Array<PostsType>
     text: string
-    profile: string
+    profile: ProfileDataType | null
     status: string
 }
 export type DialogType = {
@@ -66,7 +65,7 @@ const store: StoreType = {
                 {id: 2, title: 'Второй пост, креатив не твое...', likeCounts: 19},
             ],
             text: '',
-            profile: '',
+            profile: null,
             status: ''
         },
 

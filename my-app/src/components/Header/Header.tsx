@@ -16,7 +16,7 @@ export const Header = (props: HeaderPropsType) => {
             <div className={style.loginBlock}>
                 {props.isAuth
                     ? props.login
-                    : <NavLink to={'/login'}>LOGIN</NavLink>
+                    : <NavLink to={'/Login'}>LOGIN</NavLink>
                 }
             </div>
 
