@@ -1,9 +1,11 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import style from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogType, MessageType} from "../../redux/store";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/FormsControl/FormsControl";
+import {maxLengthCreator, required} from "../../utils/validators/validator";
 
 type DialogsType = {
   onAddMessage: (newMessageText: string) => void
@@ -43,12 +45,17 @@ export const Dialogs = (props: DialogsType) => {
   )
 }
 
+const maxLength10 = maxLengthCreator(10)
+
 export const AddMessageForm = (props: any) => {
   return (
       <form onSubmit={props.handleSubmit}>
-        <Field component='textarea'
+        <Field component={Textarea}
                name='newMessageText'
-               placeholder='введите сообщение...'/>
+               placeholder='введите сообщение...'
+               validate={[required, maxLength10]}
+        />
+
         <div>
           <button>SEND</button>
         </div>
