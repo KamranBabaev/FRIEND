@@ -1,53 +1,38 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 type AddMessageAT = {
-    type: 'ADD-MESSAGE'
-}
-type AddNewMessageAT = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    newMessageText: string
+  type: 'ADD-MESSAGE'
+  newMessageText: string
 }
 
-type ActionType = AddMessageAT | AddNewMessageAT
+type ActionType = AddMessageAT
 
 let initialState = {
-    dialogs: [
-        {id: 1, name: 'Василий'},
-        {id: 2, name: 'Петр'},
-    ],
+  dialogs: [
+    {id: 1, name: 'Василий'},
+    {id: 2, name: 'Петр'},
+  ],
 
-    messages: [
-        {id: 1, message: 'Привет, как дела?'},
-        {id: 2, message: 'Пошли пройдемся!'},
-    ],
-    newMessageText: ''
+  messages: [
+    {id: 1, message: 'Привет, как дела?'},
+    {id: 2, message: 'Пошли пройдемся!'},
+  ],
 }
 
 export const dialogsReducer = (state: any = initialState, action: ActionType) => {
-
-    switch (action.type) {
-        case ADD_MESSAGE:
-            let newMessage = {id: 3, message: state.newMessageText}
-            return {
-                ...state,
-                dialogs: [...state.dialogs],
-                messages: [...state.messages, newMessage],
-                newMessageText: ''
-            }
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newMessageText
-            }
-        default:
-            return state
-    }
+  switch (action.type) {
+    case ADD_MESSAGE:
+      return {
+        ...state,
+        dialogs: [...state.dialogs],
+        messages: [...state.messages, {id: 10, message: action.newMessageText}],
+      }
+    default:
+      return state
+  }
 }
 
-export const addMessageAC = (): AddMessageAT => ({type: ADD_MESSAGE})
-
-export const updateNewMessageTextAC = (text: string): AddNewMessageAT => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newMessageText: text
+export const addMessageAC = (newMessageText: string): AddMessageAT => ({
+  type: ADD_MESSAGE,
+  newMessageText
 })

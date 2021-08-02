@@ -30,7 +30,7 @@ function App() {
                 />
 
                 <Route exact path='/login'
-                       render={() => <Login/>}
+                       render={() => <Login />}
                 />
             </div>
 

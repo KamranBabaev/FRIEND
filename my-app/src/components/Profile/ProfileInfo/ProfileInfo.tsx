@@ -33,7 +33,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
           <div className={style.inform}>
             <div className={style.name}>КАМРАН БАБАЕВ</div>
             <ProfileStatus
-                status={props.status}
+                status='летим, только вперед'
                 userUpdateStatus={props.userUpdateStatus}
                 getUserStatus={props.getUserStatus}
             />
