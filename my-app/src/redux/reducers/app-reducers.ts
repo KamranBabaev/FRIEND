@@ -1,11 +1,11 @@
-import {authAPI} from "../../api/api";
-import {stopSubmit} from "redux-form";
 import {getAuthUserDataTC} from "./auth-reducers";
 
-type actionType = any
+type actionType = setInitializedAT
 type InitStateType = {
   initialized: boolean
 }
+export type setInitializedAT = ReturnType<typeof setInitializedAC>
+
 
 const initState: InitStateType = {
   initialized: false
@@ -25,13 +25,12 @@ export const appReducer = (state: InitStateType = initState,
   }
 }
 
-export const setInitializedAC = () => ({type: 'SET_INITIALIZED',});
+export const setInitializedAC = () => ({type: 'SET_INITIALIZED'} as const);
 
-export const initializedAppTC = () => {
-  return (dispatch: any) => {
-    dispatch(getAuthUserDataTC())
-        .then(() => {
-          dispatch(setInitializedAC())
-        })
-  }
+export const initializedAppTC = () => (dispatch: any) => {
+  let promise = dispatch(getAuthUserDataTC())
+  Promise.all([promise])
+      .then(() => {
+        dispatch(setInitializedAC())
+      })
 }

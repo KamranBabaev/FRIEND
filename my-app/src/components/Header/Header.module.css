@@ -20,6 +20,22 @@
     font-size: 20px;
 }
 
+.loginBlock button {
+    margin-left: 25px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: 600;
+    transition: 100ms ease-in-out;
+}
+
+.loginBlock button:hover {
+    background-color: #f6a486;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
 .searchBlock {
     display: flex;
     align-items: center;

@@ -1,4 +1,4 @@
-import React, {Component, ComponentType, ReactElement} from 'react';
+import React, {Component, ComponentType} from 'react';
 import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
@@ -15,14 +15,14 @@ import {Preloader} from "./components/common/Preloader/Preolader";
 
 class App extends Component<PropsType> {
 
-  // componentDidMount() {
-  //   this.props.initializedAppTC();
-  // }
+  componentDidMount() {
+    this.props.initializedAppTC();
+  }
 
   render() {
-    // if (!this.props.initialized) {
-    //   return <Preloader/>
-    // }
+    if (!this.props.initialized) {
+      return <Preloader/>
+    }
 
     return (
         <div className="App-wrapper">

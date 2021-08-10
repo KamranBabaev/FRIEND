@@ -18,13 +18,11 @@ type mapStateToPropsType = {
 }
 type mapDispatchToPropsType = {
   loginTC: (email: string, password: string, rememberMe: boolean) => void
-  logoutTC: () => void
 }
 type LoginPropsType = mapStateToPropsType & mapDispatchToPropsType
 
-const Login = (props: LoginPropsType) => {
 
-  console.log(props.isAuth)
+const Login = (props: LoginPropsType) => {
 
   const onSubmit = (formData: FormDataType) => {
     props.loginTC(formData.login, formData.password, formData.rememberMe)
@@ -40,7 +38,7 @@ const Login = (props: LoginPropsType) => {
   }
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
   return (
       <form onSubmit={props.handleSubmit}>
         <div>
@@ -85,4 +83,4 @@ const mapStateToProps = (state: RootReduxStateType): mapStateToPropsType => ({
 })
 
 export default connect(mapStateToProps,
-    {loginTC, logoutTC})(Login)
+    {loginTC})(Login)

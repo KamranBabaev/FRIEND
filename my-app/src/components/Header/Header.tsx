@@ -2,11 +2,11 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import style from './Header.module.css'
 import searchICON from './searchICON.png'
-import {logoutTC} from "../../redux/reducers/auth-reducers";
 
 type HeaderPropsType = {
   isAuth: boolean
   login: string | null
+  logoutTC: () => void
 }
 
 export const Header = (props: HeaderPropsType) => {
@@ -17,14 +17,13 @@ export const Header = (props: HeaderPropsType) => {
         <div className={style.loginBlock}>
           {props.isAuth
               ? <div>{props.login}
-                <button onClick={logoutTC}>log
-                  out
+                <button onClick={props.logoutTC}>
+                  выйти
                 </button>
               </div>
               : <NavLink to={'/Login'}>LOGIN</NavLink>
           }
         </div>
-
         <div className={style.searchBlock}>
           <img src={searchICON} width={28} height={28} alt=''/>
           <input placeholder='поиск...'/>
