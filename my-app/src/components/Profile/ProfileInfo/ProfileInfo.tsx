@@ -3,7 +3,7 @@ import style from './ProfileInfo.module.css'
 import avatar from './avatar.jpg'
 import {Preloader} from "../../common/Preloader/Preolader";
 import {ProfileDataType} from "../ProfileContainer";
-import {ProfileStatus} from "../ProfileStatus/ProfileStatus";
+import {ProfileStatusHooks} from "../ProfileStatus/ProfileStatusHooks";
 
 type ProfileInfoPropsType = {
   profile: ProfileDataType
@@ -32,8 +32,8 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
           <img src={avatar}/>
           <div className={style.inform}>
             <div className={style.name}>КАМРАН БАБАЕВ</div>
-            <ProfileStatus
-                status='летим, только вперед'
+            <ProfileStatusHooks
+                status={props.status}
                 userUpdateStatus={props.userUpdateStatus}
                 getUserStatus={props.getUserStatus}
             />
@@ -46,7 +46,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
           <div className={style.inform}>
             <img src={props.profile.photos.small} alt=''/>
             <div className={style.name}>{props.profile.fullName}</div>
-            <ProfileStatus
+            <ProfileStatusHooks
                 status={props.status}
                 userUpdateStatus={props.userUpdateStatus}
                 getUserStatus={props.getUserStatus}

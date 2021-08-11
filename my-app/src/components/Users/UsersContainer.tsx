@@ -21,7 +21,7 @@ import {
   getIsFetching,
   getPageSize,
   getTotalUsersCount,
-  getUsersSelector,
+  getUsers,
 } from "../../redux/users-selector";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
@@ -85,7 +85,7 @@ class UsersContainer extends React.Component<any> {
 
 const mapStateToProps = (state: RootReduxStateType): mapStateType => {
   return {
-    users: getUsersSelector(state),
+    users: getUsers(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
