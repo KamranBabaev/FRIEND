@@ -24,7 +24,7 @@ export const Users = (props: UsersPropsType) => {
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
     const pages = []
-    for (let i = 2070; i <= pagesCount && i <= 2080; i++) {
+    for (let i = 1; i <= pagesCount && i <= 15; i++) {
         pages.push(i)
     }
 

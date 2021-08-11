@@ -1,9 +1,9 @@
-import {InjectedFormProps, reduxForm, Field} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React from "react";
 import {Input} from "../common/FormsControl/FormsControl";
 import {required} from "../../utils/validators/validator";
 import {connect} from "react-redux";
-import {loginTC, logoutTC} from "../../redux/reducers/auth-reducers";
+import {loginTC} from "../../redux/reducers/auth-reducers";
 import {Redirect} from "react-router-dom";
 import {RootReduxStateType} from "../../redux/redux-store";
 import styles from '../common/FormsControl/FormsControl.module.css'
@@ -32,7 +32,6 @@ const Login = (props: LoginPropsType) => {
     return <Redirect to='/profile'/>
   } else {
     return <div>
-      <h1>Вход:</h1>
       <LoginReduxForm onSubmit={onSubmit}/>
     </div>
   }
@@ -40,22 +39,23 @@ const Login = (props: LoginPropsType) => {
 
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
   return (
-      <form onSubmit={props.handleSubmit}>
-        <div>
+      <form className={styles.formBlock} onSubmit={props.handleSubmit}>
+        <h1>Вход:</h1>
+        <div className={styles.inputs}>
           <Field placeholder={'логин...'}
                  name={'login'}
                  component={Input}
                  validate={[required]}
           />
         </div>
-        <div>
+        <div className={styles.inputs}>
           <Field type={'password'} name={'password'}
                  placeholder={'пароль...'}
                  component={Input}
                  validate={[required]}
           />
         </div>
-        <div>
+        <div className={styles.checkBox}>
           <Field type={'checkbox'}
                  name={'rememberMe'}
                  component={Input}

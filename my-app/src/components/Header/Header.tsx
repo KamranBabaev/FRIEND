@@ -13,7 +13,10 @@ export const Header = (props: HeaderPropsType) => {
   return (
       <div className={style.header}>
         <div className={style.logo}>FRND</div>
-
+        <div className={style.searchBlock}>
+          <img src={searchICON} width={28} height={28} alt=''/>
+          <input placeholder='поиск...'/>
+        </div>
         <div className={style.loginBlock}>
           {props.isAuth
               ? <div>{props.login}
@@ -23,10 +26,6 @@ export const Header = (props: HeaderPropsType) => {
               </div>
               : <NavLink to={'/Login'}>LOGIN</NavLink>
           }
-        </div>
-        <div className={style.searchBlock}>
-          <img src={searchICON} width={28} height={28} alt=''/>
-          <input placeholder='поиск...'/>
         </div>
       </div>
   )

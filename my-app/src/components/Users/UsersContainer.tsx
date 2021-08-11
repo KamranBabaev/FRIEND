@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {
   follow,
   followMode,
-  getUsers,
+  requestUsers,
   setCurrentPage,
   toggleIsFollowingProgress,
   unfollow,
@@ -10,11 +10,20 @@ import {
   UserType
 } from "../../redux/reducers/users-reducers";
 import {RootReduxStateType} from "../../redux/redux-store";
-import React from "react";
+import React, {ComponentType} from "react";
 
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preolader";
 import {compose} from "redux";
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsersSelector,
+} from "../../redux/users-selector";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateType = {
   users: Array<UserType>
@@ -40,14 +49,14 @@ type UsersPropsType = {
   unfollowMode: (id: number) => void
 }
 
-class UsersContainer extends React.Component<UsersPropsType> {
+class UsersContainer extends React.Component<any> {
 
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize)
+    this.props.requestUsers(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = (pageNumber: number) => {
-    this.props.getUsers(pageNumber, this.props.pageSize)
+    this.props.requestUsers(pageNumber, this.props.pageSize)
     this.props.setCurrentPage(pageNumber)
   }
 
@@ -76,17 +85,22 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
 const mapStateToProps = (state: RootReduxStateType): mapStateType => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress
+    users: getUsersSelector(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state)
   }
 }
 
-export default compose(
+export default compose<ComponentType>(
     connect(mapStateToProps, {
-      follow, unfollow, setCurrentPage, toggleIsFollowingProgress,
-      getUsers, followMode, unfollowMode
-    }))(UsersContainer)
+      follow,
+      unfollow,
+      setCurrentPage,
+      toggleIsFollowingProgress,
+      requestUsers,
+      followMode,
+      unfollowMode
+    }), withAuthRedirect)(UsersContainer)

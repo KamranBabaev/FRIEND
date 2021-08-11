@@ -2,11 +2,12 @@
     display: grid;
     grid-template-columns: 3fr 6fr;
     margin-left: 10px;
+    min-height: 500px;
 }
 
 .item {
-    margin-left: 20px;
-    margin-top: 50px;
+    margin: 60px 20px
+
 }
 
 .item textarea {
@@ -34,6 +35,5 @@
 
 .item button:hover {
     background-color: #1e7b7f;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     transition: linear 70ms;
 }

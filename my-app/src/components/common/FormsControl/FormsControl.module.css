@@ -12,3 +12,38 @@
     padding: 5px;
     color: red;
 }
+
+.formBlock {
+    margin-left: 25px;
+}
+
+.inputs input, .inputs textarea {
+    min-width: 400px;
+    margin-bottom: 10px;
+    min-height: 25px;
+}
+
+.checkBox {
+    display: flex;
+}
+
+.checkBox input {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+.formBlock button {
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background-color: white;
+    transition: 100ms ease-in-out;
+    font-weight: 600;
+}
+
+.formBlock button:hover {
+    cursor: pointer;
+    background-color: #f6a486;
+    transition: 100ms ease-in-out;
+}
