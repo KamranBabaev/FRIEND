@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useEffect, useState, KeyboardEvent} from "react";
 
-
 type ProfileStatusPropsType = {
   status: string
   userUpdateStatus: (status: string) => void
@@ -11,11 +10,6 @@ export function ProfileStatusHooks(props: ProfileStatusPropsType) {
 
   const [editMode, setEditMode] = useState<boolean>(false)
   const [status, setStatus] = useState<string>(props.status)
-
-  useEffect(() => {
-    setStatus(props.status)
-  }, [props.status])
-
 
   const activatedEditMode = () => {
     setEditMode(true)
@@ -28,6 +22,10 @@ export function ProfileStatusHooks(props: ProfileStatusPropsType) {
     let text = e.currentTarget.value
     setStatus(text)
   }
+
+  useEffect(() => {
+    setStatus(props.status)
+  }, [props.status])
 
 
   return (
@@ -44,7 +42,7 @@ export function ProfileStatusHooks(props: ProfileStatusPropsType) {
               </div>
               : <div>
                 <span onDoubleClick={activatedEditMode}>
-                  {props.status || 'статус не заполнен...'}
+                  {status || 'статус не заполнен...'}
                 </span>
               </div>
         }

@@ -4,6 +4,7 @@
     background-color: white;
     border-right: solid 1px #b3b3b3;
     font-weight: 500;
+    min-height: 800px;
 }
 
 .navbarElements {

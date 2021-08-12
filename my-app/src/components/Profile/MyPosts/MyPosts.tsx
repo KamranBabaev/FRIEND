@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import style from './MyPosts.module.css'
 import {PostsType} from "../../../redux/store";
 import {Post} from "./Post/Post";
@@ -12,28 +12,28 @@ type MyPostsType = {
   onAddPost: (newPostText: string) => void
 }
 
-export const MyPosts = (props: MyPostsType) => {
+export const MyPosts = React.memo((props: MyPostsType) => {
 
-  let postElements = props.posts.map(post => <Post key={post.id} id={post.id}
-                                                   likeCounts={post.likeCounts}
-                                                   title={post.title}/>)
+      let postElements = props.posts.map(post => <Post key={post.id} id={post.id}
+                                                       likeCounts={post.likeCounts}
+                                                       title={post.title}/>)
 
-  const addPost = (values: any) => {
-    props.onAddPost(values.newPostText)
-  }
-  return (
-      <div className={style.myPosts}>
-        <AddNewPostReduxForm onSubmit={addPost}/>
-        <div>
-          {postElements}
-        </div>
-      </div>
-  )
-}
+      const addPost = (values: any) => {
+        props.onAddPost(values.newPostText)
+      }
+      return (
+          <div className={style.myPosts}>
+            <AddNewPostReduxForm onSubmit={addPost}/>
+            <div>
+              {postElements}
+            </div>
+          </div>
+      )
+    }
+)
 
 // validateForm
 const maxLength10 = maxLengthCreator(5)
-
 const AddNewPostForm = (props: any) => {
   return (
       <form onSubmit={props.handleSubmit} className={style.textForm}>
