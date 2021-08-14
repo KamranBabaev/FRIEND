@@ -22,13 +22,13 @@ type mapDispatchToPropsType = {
 type LoginPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 
-const Login = (props: LoginPropsType) => {
+const Login = ({loginTC, isAuth}: LoginPropsType) => {
 
   const onSubmit = (formData: FormDataType) => {
-    props.loginTC(formData.login, formData.password, formData.rememberMe)
+    loginTC(formData.login, formData.password, formData.rememberMe)
   }
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Redirect to='/profile'/>
   } else {
     return <div>
@@ -37,9 +37,9 @@ const Login = (props: LoginPropsType) => {
   }
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
+const LoginForm = ({handleSubmit, error}: any) => {
   return (
-      <form className={styles.formBlock} onSubmit={props.handleSubmit}>
+      <form className={styles.formBlock} onSubmit={handleSubmit}>
         <h1>Вход:</h1>
         <div className={styles.inputs}>
           <Field placeholder={'логин...'}
@@ -63,8 +63,8 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
           <span>запомнить меня</span>
         </div>
         {
-          props.error && <div className={styles.formSummaryError}>
-            {props.error}
+          error && <div className={styles.formSummaryError}>
+            {error}
           </div>
         }
         <div>

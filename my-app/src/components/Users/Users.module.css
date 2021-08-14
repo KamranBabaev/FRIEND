@@ -41,7 +41,7 @@
 }
 
 .pagination span {
-    margin-left: 20px;
+    margin: 0 10px;
     cursor: pointer;
 }
 
@@ -49,4 +49,17 @@
     font-family: "Source Sans Pro", sans-serif;
     color: #1e7b7f;
     font-weight: 700;
+}
+
+.pagination img {
+    margin: 0 20px;
+    width: 16px;
+    opacity: 50%;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.pagination img:hover {
+    opacity: 100%;
+    transition: 100ms;
 }
