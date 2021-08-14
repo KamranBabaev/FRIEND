@@ -1,21 +1,20 @@
 {
   "files": {
-    "main.css": "/FRIEND/static/css/main.21fbcb14.chunk.css",
-    "main.js": "/FRIEND/static/js/main.244d0215.chunk.js",
-    "main.js.map": "/FRIEND/static/js/main.244d0215.chunk.js.map",
+    "main.css": "/FRIEND/static/css/main.dd46375a.chunk.css",
+    "main.js": "/FRIEND/static/js/main.891bef08.chunk.js",
+    "main.js.map": "/FRIEND/static/js/main.891bef08.chunk.js.map",
     "runtime-main.js": "/FRIEND/static/js/runtime-main.402cb7ef.js",
     "runtime-main.js.map": "/FRIEND/static/js/runtime-main.402cb7ef.js.map",
-    "static/js/2.8c5d3668.chunk.js": "/FRIEND/static/js/2.8c5d3668.chunk.js",
-    "static/js/2.8c5d3668.chunk.js.map": "/FRIEND/static/js/2.8c5d3668.chunk.js.map",
+    "static/js/2.d89950bf.chunk.js": "/FRIEND/static/js/2.d89950bf.chunk.js",
+    "static/js/2.d89950bf.chunk.js.map": "/FRIEND/static/js/2.d89950bf.chunk.js.map",
     "index.html": "/FRIEND/index.html",
-    "static/css/main.21fbcb14.chunk.css.map": "/FRIEND/static/css/main.21fbcb14.chunk.css.map",
-    "static/js/2.8c5d3668.chunk.js.LICENSE.txt": "/FRIEND/static/js/2.8c5d3668.chunk.js.LICENSE.txt",
+    "static/css/main.dd46375a.chunk.css.map": "/FRIEND/static/css/main.dd46375a.chunk.css.map",
+    "static/js/2.d89950bf.chunk.js.LICENSE.txt": "/FRIEND/static/js/2.d89950bf.chunk.js.LICENSE.txt",
     "static/media/avatar.35b2083a.jpg": "/FRIEND/static/media/avatar.35b2083a.jpg",
-    "static/media/avatar.76d2819f.jpg": "/FRIEND/static/media/avatar.76d2819f.jpg",
+    "static/media/avatar.7bdf7b93.png": "/FRIEND/static/media/avatar.7bdf7b93.png",
     "static/media/avatar.8f6f0a61.png": "/FRIEND/static/media/avatar.8f6f0a61.png",
     "static/media/avatar.fd7aeb24.jpg": "/FRIEND/static/media/avatar.fd7aeb24.jpg",
     "static/media/friends.cc1aa831.svg": "/FRIEND/static/media/friends.cc1aa831.svg",
-    "static/media/liked.8d60aaea.svg": "/FRIEND/static/media/liked.8d60aaea.svg",
     "static/media/loader.d3fbaf2b.gif": "/FRIEND/static/media/loader.d3fbaf2b.gif",
     "static/media/messages.7be6e02d.svg": "/FRIEND/static/media/messages.7be6e02d.svg",
     "static/media/music.af606310.svg": "/FRIEND/static/media/music.af606310.svg",
@@ -26,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.402cb7ef.js",
-    "static/js/2.8c5d3668.chunk.js",
-    "static/css/main.21fbcb14.chunk.css",
-    "static/js/main.244d0215.chunk.js"
+    "static/js/2.d89950bf.chunk.js",
+    "static/css/main.dd46375a.chunk.css",
+    "static/js/main.891bef08.chunk.js"
   ]
 }
