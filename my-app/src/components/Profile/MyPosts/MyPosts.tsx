@@ -10,13 +10,15 @@ import {Textarea} from "../../common/FormsControl/FormsControl";
 type MyPostsType = {
   posts: Array<PostsType>
   onAddPost: (newPostText: string) => void
+  deletePost: (postId: any)  => void
 }
 
 export const MyPosts = React.memo((props: MyPostsType) => {
 
       let postElements = props.posts.map(post => <Post key={post.id} id={post.id}
                                                        likeCounts={post.likeCounts}
-                                                       title={post.title}/>)
+                                                       title={post.title}
+                                                       deletePost={props.deletePost}/>)
 
       const addPost = (values: any) => {
         props.onAddPost(values.newPostText)
@@ -35,6 +37,7 @@ export const MyPosts = React.memo((props: MyPostsType) => {
 // validateForm
 const maxLength10 = maxLengthCreator(5)
 const AddNewPostForm = (props: any) => {
+
   return (
       <form onSubmit={props.handleSubmit} className={style.textForm}>
         <Field component={Textarea}
@@ -44,7 +47,6 @@ const AddNewPostForm = (props: any) => {
         />
         <div className={style.buttons}>
           <button>SEND</button>
-          <button>DELETE</button>
         </div>
       </form>
   )

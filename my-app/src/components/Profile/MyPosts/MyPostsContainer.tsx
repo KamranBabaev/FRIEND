@@ -1,6 +1,6 @@
 import React from "react";
 import {StateType} from "../../../redux/store";
-import {addPostAC} from "../../../redux/reducers/profile-reducers";
+import {addPostAC, deletePost} from "../../../redux/reducers/profile-reducers";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {MyPosts} from "./MyPosts";
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     onAddPost: (newPostText: string) => {
       dispatch(addPostAC(newPostText))
+    },
+    deletePost: (postId: any) => {
+      dispatch(deletePost(postId))
     }
   }
 }

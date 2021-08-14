@@ -1,4 +1,5 @@
 import {usersAPI} from "../../api/api";
+import {updateObjectInArray} from "../../utils/helpers/object-helper";
 
 type actionType =
     followType
@@ -89,23 +90,13 @@ export const usersReducer = (state: UsersType = initialState, action: actionType
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userID) {
-            return {...u, followed: true}
-          }
-          return u;
-        })
+        users: updateObjectInArray(state.users, action.userID, 'id', {followed: true})
       }
 
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userID) {
-            return {...u, followed: false}
-          }
-          return u;
-        })
+        users: updateObjectInArray(state.users, action.userID, 'id', {followed: false})
       }
 
     case SETUSERS:
@@ -169,37 +160,34 @@ export const toggleIsFollowingProgress = (isFetching: boolean,
 
 
 export const requestUsers = (page: number, pageSize: number) => {
-  return (dispatch: any) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFetching(true))
     dispatch(setCurrentPage(page))
-    usersAPI.getUsers(page, pageSize).then(data => {
-      dispatch(toggleIsFetching(false))
-      dispatch(setUsers(data.items))
-      dispatch(setTotalUsersCount(data.totalCount))
-    })
+    let promise = await usersAPI.getUsers(page, pageSize)
+    dispatch(toggleIsFetching(false))
+    dispatch(setUsers(promise.data.items))
+    dispatch(setTotalUsersCount(promise.data.totalCount))
   }
 }
 
 export const followMode = (id: number) => {
-  return (dispatch: any) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFollowingProgress(true, id))
-    usersAPI.isFollow(id).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(follow(id))
-      }
-      dispatch(toggleIsFollowingProgress(false, id))
-    })
+    let promise = await usersAPI.isFollow(id)
+    if (promise.data.resultCode === 0) {
+      dispatch(follow(id))
+    }
+    dispatch(toggleIsFollowingProgress(false, id))
   }
 }
 
 export const unfollowMode = (id: number) => {
-  return (dispatch: any) => {
+  return async (dispatch: any) => {
     dispatch(toggleIsFollowingProgress(true, id))
-    usersAPI.isUnfollow(id).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(unfollow(id))
-      }
-      dispatch(toggleIsFollowingProgress(false, id))
-    })
+    let promise = await usersAPI.isUnfollow(id)
+    if (promise.data.resultCode === 0) {
+      dispatch(unfollow(id))
+    }
+    dispatch(toggleIsFollowingProgress(false, id))
   }
 }

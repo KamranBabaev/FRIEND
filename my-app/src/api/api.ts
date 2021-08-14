@@ -8,45 +8,48 @@ const instance = axios.create({
   }
 })
 
+type respGetMeType = {
+  resultCode: number
+  messages: string[]
+  data: {
+    id: number | null
+    email: string
+    login: string
+  }
+}
+
 export const usersAPI = {
-  getUsers(currentPage: number, pageSize: number) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(resp => resp.data)
+  async getUsers(currentPage: number, pageSize: number) {
+    return await instance.get(`users?page=${currentPage}&count=${pageSize}`)
   },
-  isUnfollow(id: number) {
-    return instance.delete(`follow/${id}`)
-        .then(resp => resp.data)
+  async isUnfollow(id: number) {
+    return await instance.delete(`follow/${id}`)
   },
-  isFollow(id: number) {
-    return instance.post(`follow/${id}`, {})
-        .then(resp => resp.data)
+  async isFollow(id: number) {
+    return await instance.post(`follow/${id}`, {})
   }
 }
 
 export const authAPI = {
-  getMe() {
-    return instance.get(`auth/me`)
-        .then(resp => resp.data)
+  async getMe() {
+    return await instance.get<respGetMeType>(`auth/me`)
   },
-  login(email: string, password: string, rememberMe: boolean = false) {
-    return instance.post('auth/login', {email, password, rememberMe})
+  async login(email: string, password: string, rememberMe: boolean = false) {
+    return await instance.post('auth/login', {email, password, rememberMe})
   },
-  logout() {
-    return instance.delete('auth/login')
+  async logout() {
+    return await instance.delete('auth/login')
   },
 }
 
 export const profileAPI = {
-  getUserByID(userId: string) {
-    return instance.get(`profile/${userId}`)
-        .then(resp => resp.data)
+  async getUserByID(userId: string) {
+    return await instance.get(`profile/${userId}`)
   },
-  getStatus(userId: string) {
-    return instance.get(`profile/status/${userId}`)
-        .then(resp => resp.data)
+  async getStatus(userId: string) {
+    return await instance.get(`profile/status/${userId}`)
   },
-  updateStatus(status: string) {
-    return instance.put(`profile/status`, {status})
-        .then(resp => resp.data)
+  async updateStatus(status: string) {
+    return await instance.put(`profile/status`, {status})
   }
 }

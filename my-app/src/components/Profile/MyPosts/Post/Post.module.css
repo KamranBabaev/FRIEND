@@ -14,6 +14,14 @@
     margin: 5px;
 }
 
+.likeAndDelete {
+    margin-top: 10px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .likesBlock {
     display: flex;
     align-items: center;
@@ -21,6 +29,16 @@
 
 .likesBlock img {
     margin-right: 5px;
+    cursor: pointer;
+}
+
+.deleteIcon {
+    cursor: pointer;
+
+}
+
+.deleteIcon:hover {
+    transition: linear 70ms;
 }
 
 

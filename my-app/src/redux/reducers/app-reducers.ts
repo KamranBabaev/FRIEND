@@ -6,7 +6,6 @@ type InitStateType = {
 }
 export type setInitializedAT = ReturnType<typeof setInitializedAC>
 
-
 const initState: InitStateType = {
   initialized: false
 }
@@ -27,10 +26,8 @@ export const appReducer = (state: InitStateType = initState,
 
 export const setInitializedAC = () => ({type: 'SET_INITIALIZED'} as const);
 
-export const initializedAppTC = () => (dispatch: any) => {
+export const initializedAppTC = () => async (dispatch: any) => {
   let promise = dispatch(getAuthUserDataTC())
-  Promise.all([promise])
-      .then(() => {
-        dispatch(setInitializedAC())
-      })
+  await Promise.all([promise])
+  dispatch(setInitializedAC())
 }
