@@ -20,6 +20,7 @@ type UsersPropsType = {
   unfollowMode: (id: number) => void
 }
 
+
 export const Users = (props: UsersPropsType) => {
 
   return <div>
