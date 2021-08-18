@@ -1,5 +1,5 @@
-import React, {MouseEventHandler, useState} from "react";
-import style from './Post.module.css'
+import React, {useState} from "react";
+import styles from './Post.module.css'
 import avatar from './avatar.jpg'
 import liked from './liked.png'
 import onLiked from './onLiked.png'
@@ -29,18 +29,21 @@ export const Post = (props: PostPropsType) => {
   }
 
   return (
-      <div className={style.posts}>
-        <img className={style.imgAvatar} alt='' src={avatar}/>
-        <div className={style.title}>{props.title}</div>
-        <div className={style.likeAndDelete}>
-          <div className={style.likesBlock}>
-            <img className={style.liked} alt=''
+      <div className={styles.container}>
+        <div className={styles.posts}>
+          <img className={styles.imgAvatar} alt='' src={avatar}/>
+          <div className={styles.title}>{props.title}</div>
+        </div>
+        <div className={styles.likeAndDelete}>
+          <div className={styles.likesBlock}>
+            <img className={styles.liked}
+                 alt=''
                  onClick={like ? likeDeactivateClick : likeActivateClick}
                  src={like ? liked : onLiked}/>
             {like ? props.likeCounts + 1 : props.likeCounts}
           </div>
           <img src={deleteIcon}
-               className={style.deleteIcon}
+               className={styles.deleteIcon}
                onClick={() => props.deletePost(props.id)}
                alt=''/>
         </div>

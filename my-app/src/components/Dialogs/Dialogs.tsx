@@ -1,9 +1,10 @@
 import React from "react";
-import style from './Dialogs.module.css'
+import {useDispatch} from "react-redux";
+import {useFormik} from "formik";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {Textarea} from "../common/FormsControl/FormsControl";
-import {maxLengthCreator, required} from "../../utils/validators/validator";
+import {addMessageAC} from "../../redux/reducers/dialogs-reducers";
+import styles from "./Dialogs.module.css";
 
 type DialogsType = {
   onAddMessage: (newMessageText: string) => void
@@ -13,50 +14,45 @@ type DialogsType = {
 
 export const Dialogs = (props: DialogsType) => {
 
+  const dispatch = useDispatch()
+
   let dialogsElements = props.dialogsItem
       .map(d => <DialogItem id={d.id} name={d.name} key={d.id}/>)
 
   let messagesElements = props.messages
       .map(m => <Message message={m.message} key={m.id}/>)
 
-  const addNewMessage = (values: any) => {
-    props.onAddMessage(values.newMessageText)
-  }
+  const formik = useFormik({
+        initialValues: {
+          newMessageText: ''
+        },
+
+        onSubmit: values => {
+          dispatch(addMessageAC(values.newMessageText))
+          formik.resetForm()
+        },
+      }
+  )
 
   return (
-      <>
-        <div className={style.dialogs}>
-
-          <div className={style.d_items}>
+      <div className={styles.dialogsBlock}>
+        <div className={styles.dialogs}>
+          <div className={styles.d_items}>
             {dialogsElements}
           </div>
-
-          <div className={style.messages}>
+          <div className={styles.messages}>
             {messagesElements}
           </div>
-
         </div>
-        <div className={style.item}>
-          {/*<AddMessageFormRedux onSubmit={addNewMessage}/>*/}
-        </div>
-      </>
-  )
-}
-
-const maxLength10 = maxLengthCreator(10)
-
-export const AddMessageForm = (props: any) => {
-  return (
-      <form onSubmit={props.handleSubmit}>
-        {/*<input component={Textarea}*/}
-        {/*       name='newMessageText'*/}
-        {/*       placeholder='введите сообщение...'*/}
-        {/*       validate={[required, maxLength10]}*/}
-        {/*/>*/}
-
-        <div>
-          <button>SEND</button>
-        </div>
-      </form>
-  )
-}
+        <form onSubmit={formik.handleSubmit}>
+          <div className={styles.textForm}>
+            <textarea name="newMessageText"
+                      onChange={formik.handleChange}
+                      value={formik.values.newMessageText}
+            />
+          </div>
+          <button type="submit">отправить</button>
+        </form>
+      </div>
+  );
+};
