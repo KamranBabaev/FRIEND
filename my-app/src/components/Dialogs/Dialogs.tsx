@@ -2,15 +2,13 @@ import React from "react";
 import style from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType} from "../../redux/store";
-import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormsControl/FormsControl";
 import {maxLengthCreator, required} from "../../utils/validators/validator";
 
 type DialogsType = {
   onAddMessage: (newMessageText: string) => void
-  messages: Array<MessageType>
-  dialogsItem: Array<DialogType>
+  messages: Array<any>
+  dialogsItem: Array<any>
 }
 
 export const Dialogs = (props: DialogsType) => {
@@ -39,7 +37,7 @@ export const Dialogs = (props: DialogsType) => {
 
         </div>
         <div className={style.item}>
-          <AddMessageFormRedux onSubmit={addNewMessage}/>
+          {/*<AddMessageFormRedux onSubmit={addNewMessage}/>*/}
         </div>
       </>
   )
@@ -50,11 +48,11 @@ const maxLength10 = maxLengthCreator(10)
 export const AddMessageForm = (props: any) => {
   return (
       <form onSubmit={props.handleSubmit}>
-        <Field component={Textarea}
-               name='newMessageText'
-               placeholder='введите сообщение...'
-               validate={[required, maxLength10]}
-        />
+        {/*<input component={Textarea}*/}
+        {/*       name='newMessageText'*/}
+        {/*       placeholder='введите сообщение...'*/}
+        {/*       validate={[required, maxLength10]}*/}
+        {/*/>*/}
 
         <div>
           <button>SEND</button>
@@ -62,7 +60,3 @@ export const AddMessageForm = (props: any) => {
       </form>
   )
 }
-
-const AddMessageFormRedux = reduxForm(
-    {form: 'dialogsAddMessageForm'}
-)(AddMessageForm)

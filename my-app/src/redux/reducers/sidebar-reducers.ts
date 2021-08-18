@@ -1,5 +1,3 @@
-import {ActionType} from "../store";
-
 let initialState = {
     friend: [
         {id: 1, name: 'Николай'},
@@ -11,6 +9,6 @@ let initialState = {
     ]
 }
 
-export const sidebarReducer = (state: any = initialState, action: ActionType) => {
+export const sidebarReducer = (state: any = initialState, action: any) => {
     return state
 }

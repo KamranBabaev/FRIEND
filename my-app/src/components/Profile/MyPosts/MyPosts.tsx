@@ -1,57 +1,52 @@
 import React from "react";
-import style from './MyPosts.module.css'
-import {PostsType} from "../../../redux/store";
 import {Post} from "./Post/Post";
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validator";
-import {Textarea} from "../../common/FormsControl/FormsControl";
-
+import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {addPostAC} from "../../../redux/reducers/profile-reducers";
+import styles from './MyPosts.module.css';
 
 type MyPostsType = {
-  posts: Array<PostsType>
+  posts: Array<any>
   onAddPost: (newPostText: string) => void
-  deletePost: (postId: any)  => void
+  deletePost: (postId: any) => void
 }
 
-export const MyPosts = React.memo((props: MyPostsType) => {
+export const MyPosts = (props: MyPostsType) => {
 
-      let postElements = props.posts.map(post => <Post key={post.id} id={post.id}
-                                                       likeCounts={post.likeCounts}
-                                                       title={post.title}
-                                                       deletePost={props.deletePost}/>)
+  const dispatch = useDispatch()
 
-      const addPost = (values: any) => {
-        props.onAddPost(values.newPostText)
+  let postElements = props.posts
+      .map(post => <Post key={post.id} id={post.id}
+                         likeCounts={post.likeCounts}
+                         title={post.title}
+                         deletePost={props.deletePost}/>)
+
+  const formik = useFormik({
+        initialValues: {
+          newPostText: ''
+        },
+
+        onSubmit: values => {
+          dispatch(addPostAC(values.newPostText))
+          formik.resetForm()
+        },
       }
-      return (
-          <div className={style.myPosts}>
-            <AddNewPostReduxForm onSubmit={addPost}/>
-            <div>
-              {postElements}
-            </div>
-          </div>
-      )
-    }
-)
-
-// validateForm
-const maxLength10 = maxLengthCreator(5)
-const AddNewPostForm = (props: any) => {
+  )
 
   return (
-      <form onSubmit={props.handleSubmit} className={style.textForm}>
-        <Field component={Textarea}
-               placeholder='новый пост...'
-               name='newPostText'
-               validate={[required, maxLength10]}
-        />
-        <div className={style.buttons}>
-          <button>SEND</button>
+      <div className={styles.myPosts}>
+        <form onSubmit={formik.handleSubmit}>
+          <div className={styles.textForm}>
+            <textarea name="newPostText"
+                      onChange={formik.handleChange}
+                      value={formik.values.newPostText}
+            />
+          </div>
+          <button type="submit">добавить</button>
+        </form>
+        <div>
+          {postElements}
         </div>
-      </form>
-  )
-}
-
-const AddNewPostReduxForm = reduxForm(
-    {form: 'ProfileAddNewPostForm'}
-)(AddNewPostForm)
+      </div>
+  );
+};

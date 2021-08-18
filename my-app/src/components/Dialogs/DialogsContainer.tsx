@@ -1,15 +1,14 @@
 import React from "react";
 import {addMessageAC} from "../../redux/reducers/dialogs-reducers";
 import {Dialogs} from "./Dialogs";
-import {FriendType, MessageType} from "../../redux/store";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {RootReduxStateType} from "../../redux/redux-store";
 
 type mapStateToProps = {
-  messages: Array<MessageType>
-  dialogsItem: Array<FriendType>
+  messages: Array<any>
+  dialogsItem: Array<any>
   newMessageText: string
 }
 

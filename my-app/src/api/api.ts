@@ -34,8 +34,8 @@ export const authAPI = {
   async getMe() {
     return await instance.get<respGetMeType>(`auth/me`)
   },
-  async login(email: string, password: string, rememberMe: boolean = false) {
-    return await instance.post('auth/login', {email, password, rememberMe})
+  async login(email: string, password: string, rememberMe: boolean = false, captcha: any) {
+    return await instance.post('auth/login', {email, password, rememberMe, captcha})
   },
   async logout() {
     return await instance.delete('auth/login')
@@ -51,5 +51,11 @@ export const profileAPI = {
   },
   async updateStatus(status: string) {
     return await instance.put(`profile/status`, {status})
+  }
+}
+
+export const securityAPI = {
+  getCaptcha() {
+    return instance.get(`security/get-captcha-url`)
   }
 }

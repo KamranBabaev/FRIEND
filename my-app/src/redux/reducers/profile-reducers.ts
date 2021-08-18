@@ -1,4 +1,3 @@
-import {PostsType} from "../store";
 import {profileAPI} from "../../api/api";
 import {ProfileDataType} from "../../components/Profile/ProfileContainer";
 
@@ -33,7 +32,7 @@ type deletePostAT = {
 }
 
 type InitialType = {
-  posts: Array<PostsType>
+  posts: Array<any>
   profile: null | ProfileDataType
   status: string
 }
@@ -52,7 +51,7 @@ export const profileReducer = (state: InitialType = initialState,
   console.log(action)
   switch (action.type) {
     case ADD_POST:
-      let newPost: PostsType = {id: 5, title: action.newPostText, likeCounts: 0}
+      let newPost: any = {id: 5, title: action.newPostText, likeCounts: 0}
       return {
         ...state,
         posts: [newPost, ...state.posts],

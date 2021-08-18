@@ -1,4 +1,4 @@
-import React, {Component, ComponentType} from 'react';
+import React, {Component, ComponentType, Suspense} from 'react';
 import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import {NavbarContainer} from "./components/Navbar/NavbarContainer";
@@ -8,12 +8,11 @@ import {compose} from "redux";
 import {initializedAppTC} from "./redux/reducers/app-reducers";
 import {RootReduxStateType} from "./redux/redux-store";
 import {Preloader} from "./components/common/Preloader/Preolader";
-import {Suspense} from 'react';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {Login} from "./components/Login/LoginFormik";
 
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"));
-const Login = React.lazy(() => import("./components/Login/Login"));
 
 
 class App extends Component<PropsType> {
@@ -53,7 +52,7 @@ class App extends Component<PropsType> {
 }
 
 const mapStateToProps = (state: RootReduxStateType) => ({
-  initialized: state.app.initialized
+  initialized: state.app.initialized,
 })
 
 export default compose<ComponentType>(

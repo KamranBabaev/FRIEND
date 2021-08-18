@@ -32,11 +32,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
           <img src={avatar}/>
           <div className={style.inform}>
             <div className={style.name}>КАМРАН БАБАЕВ</div>
-            <ProfileStatusHooks
-                status={props.status}
-                userUpdateStatus={props.userUpdateStatus}
-                getUserStatus={props.getUserStatus}
-            />
+            <div>статус: неизменяемый статус</div>
             <div>возраст: 27 лет</div>
             <div>занятость: студент</div>
             <div>город: Санкт-Петербург, Россия</div>

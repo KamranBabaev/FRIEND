@@ -1,5 +1,5 @@
 .myPosts {
-    padding: 10px;
+    padding: 10px 20px;
     font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -7,29 +7,34 @@
     min-width: 800px;
     max-width: 1200px;
     min-height: 100px;
-    margin: 0;
-    padding: 12px 20px;
+    margin: 10px 0;
+    padding: 10px;
     box-sizing: border-box;
     border: 2px solid #9a9a9a;
-    border-radius: 5px;
-    background-color: #fafafa;
-    font-size: 14px;
-}
-
-.buttons button {
-    margin-right: 5px;
-    width: 100px;
-    height: 25px;
-    cursor: pointer;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 700;
+    border-radius: 10px;
     background-color: #ffffff;
-    border: solid 2px #9a9a9a;
-    border-radius: 5px;
-    transition: linear 70ms;
+    font-size: 16px;
+    outline: none;
 }
 
-.buttons button:hover {
-    background-color: rgba(30, 123, 127, 0.75);
-    transition: linear 70ms;
+.textForm textarea:hover {
+    border: 2px solid #355037;
+}
+
+.myPosts button {
+    width: 150px;
+    padding: 7px 5px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 10px;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+    background-color: #72c578;
+    border: 2px solid #e7e4e4;
+}
+
+.myPosts button:hover {
+    background-color: #4ca452;
+    transition: 100ms ease-in-out;
 }

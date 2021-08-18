@@ -1,12 +1,8 @@
-import {SidebarType, StateType} from "../../redux/store";
 import {connect} from "react-redux";
 import {Navbar} from "./Navbar";
 
-type MapStateType = {
-    sidebar: SidebarType
-}
 
-const mapStateToProps = (state: StateType): MapStateType => {
+const mapStateToProps = (state: any): any => {
     return {
         sidebar: state.sidebar
     }

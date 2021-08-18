@@ -2,7 +2,6 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import style from './Navbar.module.css'
 import avatar from './icons/avatar.png'
-import {SidebarType} from "../../redux/store";
 import profile from './icons/profile.svg'
 import friends from './icons/friends.svg'
 import messages from './icons/messages.svg'
@@ -10,12 +9,9 @@ import news from './icons/news.svg'
 import music from './icons/music.svg'
 import settings from './icons/settings.svg'
 
-type PropsType = {
-    sidebar: SidebarType
-}
+export const Navbar = (props: any) => {
 
-export const Navbar = (props: PropsType) => {
-
+    // @ts-ignore
     const friendElements = props.sidebar.friend.map(f => <div className={style.friend} key={f.id}>
         <img src={avatar} alt=''/>
         {f.name}

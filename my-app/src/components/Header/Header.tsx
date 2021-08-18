@@ -24,7 +24,7 @@ export const Header = (props: HeaderPropsType) => {
                   выйти
                 </button>
               </div>
-              : <NavLink to={'/Login'}>LOGIN</NavLink>
+              : <NavLink to={'/login'}>LOGIN</NavLink>
           }
         </div>
       </div>
