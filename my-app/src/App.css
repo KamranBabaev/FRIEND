@@ -1,13 +1,8 @@
-.App-wrapper {
-  display: grid;
-  grid-template-areas:
-    'hd hd'
-    'nav pr';
-  grid-template-rows: 70px 1fr;
-  grid-template-columns: 3fr 12fr;
-  background-color: white;
+.App {
+    display: flex;
+    flex-direction: column;
 }
 
-.App-wrapper-content {
-  grid-area: pr;
+.App-wrapper {
+    display: flex;
 }

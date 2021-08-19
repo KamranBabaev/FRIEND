@@ -1,8 +1,7 @@
 import React from "react";
-import style from './Profile.module.css'
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
-import {ProfileDataType} from "./ProfileContainer";
+import {ProfileDataType} from "../../utils/types/types";
 
 type ProfilePropsType = {
   profile: ProfileDataType
@@ -11,10 +10,9 @@ type ProfilePropsType = {
   getUserStatus: (userId: string) => void
 }
 
-
 export const Profile = (props: ProfilePropsType) => {
   return (
-      <div className={style.profile}>
+      <div>
         <ProfileInfo
             profile={props.profile}
             status={props.status}

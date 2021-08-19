@@ -5,21 +5,7 @@ import {UserType} from "../../redux/reducers/users-reducers";
 import {NavLink} from "react-router-dom";
 import {Preloader} from "../common/Preloader/Preolader";
 import {Paginator} from "./Paginator/Paginator";
-
-type UsersPropsType = {
-  users: Array<UserType>
-  follow: (userID: number) => void
-  unfollow: (userID: number) => void
-  pageSize: number
-  totalUsersCount: number
-  currentPage: number
-  onPageChanged: (pageNumber: number) => void
-  followingInProgress: Array<number>
-  isFetching: boolean
-  followMode: (id: number) => void
-  unfollowMode: (id: number) => void
-}
-
+import {UsersPropsType} from "../../utils/types/types";
 
 export const Users = (props: UsersPropsType) => {
 

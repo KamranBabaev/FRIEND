@@ -1,10 +1,7 @@
-import preolader from './loader.gif'
-
+import {LinearProgress} from "@material-ui/core";
 
 export const Preloader = () => {
-    return(
-        <div className='preloader'>
-            <img src={preolader} alt=""/>
-        </div>
-    )
+  return (
+      <LinearProgress color="secondary"/>
+  )
 }

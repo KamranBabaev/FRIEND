@@ -4,6 +4,7 @@ import {useFormik} from "formik";
 import {useDispatch} from "react-redux";
 import {addPostAC} from "../../../redux/reducers/profile-reducers";
 import styles from './MyPosts.module.css';
+import {Button, TextField} from "@material-ui/core";
 
 type MyPostsType = {
   posts: Array<any>
@@ -27,7 +28,9 @@ export const MyPosts = (props: MyPostsType) => {
         },
 
         onSubmit: values => {
-          dispatch(addPostAC(values.newPostText))
+          if (values.newPostText.trim().length > 0) {
+            dispatch(addPostAC(values.newPostText))
+          }
           formik.resetForm()
         },
       }
@@ -37,14 +40,18 @@ export const MyPosts = (props: MyPostsType) => {
       <div className={styles.myPosts}>
         <form onSubmit={formik.handleSubmit}>
           <div className={styles.textForm}>
-            <textarea name="newPostText"
-                      onChange={formik.handleChange}
-                      value={formik.values.newPostText}
+            <TextField className={styles.inputField}
+                       label="новый пост..."
+                       variant="outlined"
+                       name="newPostText"
+                       onChange={formik.handleChange}
+                       value={formik.values.newPostText}
             />
           </div>
-          <button type="submit">добавить</button>
+          <Button variant="contained"
+                  type="submit">добавить</Button>
         </form>
-        <div>
+        <div className={styles.blockWithPosts}>
           {postElements}
         </div>
       </div>

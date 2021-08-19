@@ -5,6 +5,7 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {addMessageAC} from "../../redux/reducers/dialogs-reducers";
 import styles from "./Dialogs.module.css";
+import {Button, TextField} from "@material-ui/core";
 
 type DialogsType = {
   onAddMessage: (newMessageText: string) => void
@@ -15,12 +16,6 @@ type DialogsType = {
 export const Dialogs = (props: DialogsType) => {
 
   const dispatch = useDispatch()
-
-  let dialogsElements = props.dialogsItem
-      .map(d => <DialogItem id={d.id} name={d.name} key={d.id}/>)
-
-  let messagesElements = props.messages
-      .map(m => <Message message={m.message} key={m.id}/>)
 
   const formik = useFormik({
         initialValues: {
@@ -37,21 +32,24 @@ export const Dialogs = (props: DialogsType) => {
   return (
       <div className={styles.dialogsBlock}>
         <div className={styles.dialogs}>
-          <div className={styles.d_items}>
-            {dialogsElements}
-          </div>
-          <div className={styles.messages}>
-            {messagesElements}
-          </div>
+          <DialogItem dialogsItem={props.dialogsItem}
+                      messages={props.messages}
+          />
         </div>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit}
+              className={styles.messageForm}>
           <div className={styles.textForm}>
-            <textarea name="newMessageText"
-                      onChange={formik.handleChange}
-                      value={formik.values.newMessageText}
+            <TextField className={styles.inputField}
+                       label="новое сообщение..."
+                       variant="outlined"
+                       name="newMessageText"
+                       onChange={formik.handleChange}
+                       value={formik.values.newMessageText}
             />
           </div>
-          <button type="submit">отправить</button>
+          <Button variant="contained" type="submit">
+            отправить
+          </Button>
         </form>
       </div>
   );

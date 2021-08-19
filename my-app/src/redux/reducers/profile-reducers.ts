@@ -1,5 +1,5 @@
 import {profileAPI} from "../../api/api";
-import {ProfileDataType} from "../../components/Profile/ProfileContainer";
+import {ProfileDataType} from "../../utils/types/types";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE'

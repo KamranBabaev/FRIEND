@@ -8,39 +8,19 @@
     justify-content: space-between;
 }
 
-.textForm textarea {
+.messageForm {
+    margin: 20px 25px;
+}
+
+.inputField input {
     min-width: 800px;
-    max-width: 1200px;
-    min-height: 100px;
-    margin: 10px 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 2px solid #9a9a9a;
-    border-radius: 10px;
-    background-color: #ffffff;
-    font-size: 16px;
-    outline: none;
+    min-height: 50px;
 }
 
-.textForm textarea:hover {
-    border: 2px solid #505050;
-}
-
-.dialogsBlock button {
-    margin-left: 15px;
-    width: 150px;
-    padding: 7px 5px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    border-radius: 10px;
-    transition: 100ms ease-in-out;
-    cursor: pointer;
-    background-color: #72c578;
-    border: 2px solid #e7e4e4;
-}
-
-.dialogsBlock button:hover {
-    background-color: #4ca452;
-    transition: 100ms ease-in-out;
+.messageForm button {
+    background-color: rgb(238, 238, 238);
+    margin-top: 10px;
+    width: 120px;
+    font-size: 12px;
+    font-weight: 700;
 }

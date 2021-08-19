@@ -2,8 +2,9 @@ import React from "react";
 import style from './ProfileInfo.module.css'
 import avatar from './avatar.jpg'
 import {Preloader} from "../../common/Preloader/Preolader";
-import {ProfileDataType} from "../ProfileContainer";
 import {ProfileStatusHooks} from "../ProfileStatus/ProfileStatusHooks";
+import {ProfileDataType} from "../../../utils/types/types";
+import ava2 from './avka.png';
 
 type ProfileInfoPropsType = {
   profile: ProfileDataType
@@ -29,7 +30,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
   return (
       <div className={style.profileInfo}>
         <div className={style.user}>
-          <img src={avatar}/>
+          <img src={avatar} alt=''/>
           <div className={style.inform}>
             <div className={style.name}>КАМРАН БАБАЕВ</div>
             <div>статус: неизменяемый статус</div>
@@ -40,7 +41,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
         </div>
         <div className={style.user}>
           <div className={style.inform}>
-            <img src={props.profile.photos.small} alt=''/>
+            <img src={props.profile.photos.small || ava2} alt=''/>
             <div className={style.name}>{props.profile.fullName}</div>
             <ProfileStatusHooks
                 status={props.status}
@@ -48,13 +49,13 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                 getUserStatus={props.getUserStatus}
             />
             <div className={style.aboutMe}>Обо мне:
-              {props.profile.aboutMe}
+              {props.profile.aboutMe || ' не заполнен...'}
             </div>
             <div className={style.jobStatus}>
               {statusWork()}
             </div>
             <div className={style.contacts}>
-              Мой инстаграмм: {props.profile.contacts.instagram}
+              Мой инстаграмм: {props.profile.contacts.instagram || ' не заполнен...'}
             </div>
           </div>
         </div>

@@ -3,9 +3,10 @@ import {addPostAC, deletePost} from "../../../redux/reducers/profile-reducers";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {MyPosts} from "./MyPosts";
+import {RootReduxStateType} from "../../../redux/redux-store";
 
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootReduxStateType) => {
   return {
     posts: state.profilePage.posts,
   }
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     onAddPost: (newPostText: string) => {
       dispatch(addPostAC(newPostText))
     },
-    deletePost: (postId: any) => {
+    deletePost: (postId: string | number) => {
       dispatch(deletePost(postId))
     }
   }

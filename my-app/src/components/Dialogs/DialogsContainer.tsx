@@ -7,11 +7,10 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {RootReduxStateType} from "../../redux/redux-store";
 
 type mapStateToProps = {
-  messages: Array<any>
-  dialogsItem: Array<any>
+  messages: Array<{ id: number; message: string }>
+  dialogsItem: Array<{ id: number; name: string }>
   newMessageText: string
 }
-
 type mapDispatchToProps = {
   onAddMessage: (newMessageText: string) => void
 }
@@ -20,7 +19,7 @@ const mapStateToProps = (state: RootReduxStateType): mapStateToProps => {
 
   return {
     messages: state.messagePage.messages,
-    dialogsItem: state.sidebar.friend,
+    dialogsItem: state.messagePage.dialogs,
     newMessageText: state.messagePage.newMessageText,
   }
 }

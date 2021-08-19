@@ -4,10 +4,14 @@ type AddMessageAT = {
   type: 'ADD-MESSAGE'
   newMessageText: string
 }
-
 type ActionType = AddMessageAT
+type initialStateDialogsReducerType = {
+  dialogs: Array<{ id: number; name: string }>
+  messages: Array<{ id: number; message: string }>
+  newMessageText: string
+}
 
-let initialState = {
+let initialState: initialStateDialogsReducerType = {
   dialogs: [
     {id: 1, name: 'Василий'},
     {id: 2, name: 'Петр'},
@@ -17,9 +21,10 @@ let initialState = {
     {id: 1, message: 'Привет, как дела?'},
     {id: 2, message: 'Пошли пройдемся!'},
   ],
+  newMessageText: ''
 }
 
-export const dialogsReducer = (state: any = initialState, action: ActionType) => {
+export const dialogsReducer = (state: initialStateDialogsReducerType = initialState, action: ActionType) => {
   switch (action.type) {
     case ADD_MESSAGE:
       return {

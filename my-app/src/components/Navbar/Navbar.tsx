@@ -8,61 +8,66 @@ import messages from './icons/messages.svg'
 import news from './icons/news.svg'
 import music from './icons/music.svg'
 import settings from './icons/settings.svg'
+import {initStateSidebarType} from "../../redux/reducers/sidebar-reducers";
 
-export const Navbar = (props: any) => {
+type PropsType = {
+  sidebar: initStateSidebarType
+}
 
-    // @ts-ignore
-    const friendElements = props.sidebar.friend.map(f => <div className={style.friend} key={f.id}>
+export const Navbar = (props: PropsType) => {
+
+  const friendElements = props.sidebar.friend
+      .map(f => <div className={style.friend} key={f.id}>
         <img src={avatar} alt=''/>
         {f.name}
-    </div>)
+      </div>)
 
-    return (
-        <div className={style.navbar}>
-            <div className={style.navbarElements}>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/profile'>
-                        <img src={profile} alt=''/>
-                        Профиль
-                    </NavLink>
-                </div>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/users'>
-                        <img src={friends} alt=''/>
-                        Друзья
-                    </NavLink>
-                </div>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/dialogs'>
-                        <img src={messages} alt=''/>
-                        Сообщения
-                    </NavLink>
-                </div>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/news'>
-                        <img src={news} alt=''/>
-                        Новости
-                    </NavLink>
-                </div>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/music'>
-                        <img src={music} alt=''/>
-                        Музыка
-                    </NavLink>
-                </div>
-                <div className={style.items}>
-                    <NavLink activeClassName={style.activeLink} to='/settings'>
-                        <img src={settings} alt=''/>
-                        Настройки
-                    </NavLink>
-                </div>
-            </div>
-
-            <div className={style.friends}>
-                <div className={style.titleFriends}>Друзья онлайн:</div>
-                {friendElements}
-            </div>
-
+  return (
+      <div className={style.navbar}>
+        <div className={style.navbarElements}>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/profile'>
+              <img src={profile} alt=''/>
+              профиль
+            </NavLink>
+          </div>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/users'>
+              <img src={friends} alt=''/>
+              друзья
+            </NavLink>
+          </div>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/dialogs'>
+              <img src={messages} alt=''/>
+              сообщения
+            </NavLink>
+          </div>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/news'>
+              <img src={news} alt=''/>
+              новости
+            </NavLink>
+          </div>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/music'>
+              <img src={music} alt=''/>
+              музыка
+            </NavLink>
+          </div>
+          <div className={style.items}>
+            <NavLink activeClassName={style.activeLink} to='/settings'>
+              <img src={settings} alt=''/>
+              настройки
+            </NavLink>
+          </div>
         </div>
-    )
+
+        <div className={style.friends}>
+          <div className={style.titleFriends}>Друзья онлайн:</div>
+          {friendElements}
+        </div>
+
+      </div>
+  )
 }
