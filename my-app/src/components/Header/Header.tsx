@@ -29,7 +29,7 @@ export const Header = (props: HeaderPropsType) => {
                     выйти
                   </Button>
                 </div>
-                : <NavLink to={'/login'}>LOGIN</NavLink>
+                : <div style={{marginRight: '25px'}}>вы не авторизованы</div>
           }
         </div>
       </AppBar>
